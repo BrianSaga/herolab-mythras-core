@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of Characts possessed by every actor for the
+      game system. The display order of Characts is controlled via the assignment of
+      an "explicit" tag with the relative position of each.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Sample Charact
+  -->
+	<thing
+	id="attrStr"
+	name="Strength"
+	compset="Charact"
+	isunique="yes"
+	description="STR represents physical strength: how much one can lift, how hard one can hit, and so on. Characters with a high STR are likely to be more heavily muscled whilst those with a low STR are somewhat on the scrawny side. STR is a component of the Damage Modifier (see page 9). If a character is reduced to zero STR he lacks the ability to move or lift objects, becoming bedridden until STR improves somehow (through natural healing or magic, for example).">
+		<fieldval field="trtAbbrev" value="STR"/>
+		<tag group="explicit" tag="1"/>
+	</thing>
+
+	<thing
+	id="attrCon"
+	name="Constitution"
+	compset="Charact"
+	isunique="yes"
+	description="CON is measure of health and hardiness. Those with a high CON are physically tough, and likely to be more resistant to disease or poison. Those with a low CON are less resilient, and may be prone to sickness and tire quickly. CON is a component in determining Hit Points (see page 10), and Healing Rate (see page 9). If CON falls to zero for any reason the character dies.">
+		<fieldval field="trtAbbrev" value="CON"/>
+		<tag group="explicit" tag="2"/>
+	</thing>
+
+	<thing
+	id="attrSiz"
+	name="Size"
+	compset="Charact"
+	isunique="yes"
+	description="SIZ measures mass and helps indicate height and weight. The larger the SIZ the heavier or bigger the creature is likely to be. Most creatures’ SIZ has a higher minimum value than other characteristics, representing the smallest example of an adult of that race; which in the case of humans is 8. SIZ is used to help figure Hit Points (see page 10), as larger, heavier creatures tend to have greater endurance against damage. SIZ can also be used to determine a character’s Damage Modifier, since mass helps to increase the force of a blow. SIZ provides rough limits to Height and Weight, depending on the character’s body frame (see page 9). If SIZ drops below the species minimum they are considered to have wasted away to the point they are bedridden.">
+		<fieldval field="trtAbbrev" value="SIZ"/>
+		<tag group="explicit" tag="3"/>
+	</thing> 
+
+	<thing
+	id="attrDex"
+	name="Dexterity"
+	compset="Charact"
+	isunique="yes"
+	description="Agility, balance, and reflexes are measured by DEX. Characters with high DEX are fast, nimble, and graceful of movement. Those with a low DEX tend to be lumbering and clumsy. DEX is an important aspect of Action Points (see page 8), and Initiative Bonus (see page 10). If a character is reduced to zero DEX they suffer functional paralysis, unable to move until the situation is rectified.">
+		<fieldval field="trtAbbrev" value="DEX"/>
+		<tag group="explicit" tag="4"/>
+	</thing>
+	
+	<thing
+	id="attrInt"
+	name="Intelligence"
+	compset="Charact"
+	isunique="yes"
+	description="INT is measurement of cognitive ability. It indicates the capacity for a character to think both logically and creatively. Those with a lower INT score are not necessarily stupid, but they are likely to be constrained in how creatively they can employ their wits. Creatures with an INT of 7 or below are considered sentient, retaining animal level instinct, and able to react to stimuli. Individuals with an INT of 8 or higher are deemed fully sapient. INT is a factor in calculating Action Points (see page 8), and Initiative Bonus (see page 10). If INT is reduced to zero the character becomes completely mindless.">
+		<fieldval field="trtAbbrev" value="INT"/>
+		<tag group="explicit" tag="5"/>
+	</thing>
+
+	<thing
+	id="attrPow"
+	name="Power"
+	compset="Charact"
+	isunique="yes"
+	description="Power is a measurement of a character’s soul, spirit, inner drive, and capacity for magic. It encompasses a number of different things and is a relatively abstract measurement, but is also one of the most important. POW is the characteristic that marks a character out to the gods or other supernatural powers, and is an indication of divine or magical potential, as well as being an indication of 8 the force of their personal determination. POW governs a character’s Magic Points (see page 10), and Luck Points (see page 10). If a character’s POW ever drops to zero they lose all independent will.">
+		<fieldval field="trtAbbrev" value="POW"/>
+		<tag group="explicit" tag="6"/>
+	</thing>
+	
+	<thing
+	id="attrCha"
+	name="Charisma"
+	compset="Charact"
+	isunique="yes"
+	description="Charisma measures personality, and is independent of physical appearance. Someone with a high CHA for example, might be ugly or plain to look at, but blessed with a charm and wit that more than compensates for not being handsome. Likewise a low CHA might indicate someone who is radiantly beautiful but utterly shallow or simply meek. A good CHA is often useful for those who wish to be leaders or centres of their local community. Diehard loners and submissive followers tend towards the other extreme. CHA affects a character’s Experience Modifier (see page 9). If CHA is ever falls to zero, the character can no longer socially interact with others, becoming so painfully shy or antisocial they are ignored or even driven away.">
+		<fieldval field="trtAbbrev" value="CHA"/>
+		<tag group="explicit" tag="7"/>
+	</thing>
+
+  </document>

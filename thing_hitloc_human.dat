@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of races for the game system. The special
+      advantages of each race are conferred through a combination of scripts and
+      automatic assignment of special abilities. All special abilities are assigned
+      via the bootstrapping of the ability, resulting in the ability being
+      automatically assigned to the actor whenever the race is selected. If an ability
+      is both user-selected AND conferred by a race, the ability only appears a single
+      time because it all abilities are "unique".
+-->
+
+<document signature="Hero Lab Data">
+
+    <!-- Hit Locations -->
+  <thing
+    id="hlHead"
+    name="Head"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+
+    <tag group="explicit" tag="1"/>	
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 1
+	  elseif (total < 11) then
+		retval = 2
+	  elseif (total < 16) then
+		retval = 3
+	  elseif (total < 21) then
+		retval = 4
+	  elseif (total < 26) then
+		retval = 5
+	  elseif (total < 31) then
+		retval = 6
+	  elseif (total < 36) then
+		retval = 7
+	  elseif (total < 41) then
+		retval = 8
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 8 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+    </thing>
+
+	<!-- Hit Locations -->
+  <thing
+    id="hlArmRt"
+    name="Right Arm"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="3"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 1
+	  elseif (total < 11) then
+		retval = 1
+	  elseif (total < 16) then
+		retval = 2
+	  elseif (total < 21) then
+		retval = 3
+	  elseif (total < 26) then
+		retval = 4
+	  elseif (total < 31) then
+		retval = 5
+	  elseif (total < 36) then
+		retval = 6
+	  elseif (total < 41) then
+		retval = 7
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 7 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+    </thing>
+	
+	<!-- Hit Locations -->
+  <thing
+    id="hlArmLt"
+    name="Left Arm"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="2"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+	
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 1
+	  elseif (total < 11) then
+		retval = 1
+	  elseif (total < 16) then
+		retval = 2
+	  elseif (total < 21) then
+		retval = 3
+	  elseif (total < 26) then
+		retval = 4
+	  elseif (total < 31) then
+		retval = 5
+	  elseif (total < 36) then
+		retval = 6
+	  elseif (total < 41) then
+		retval = 7
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 7 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+    </thing>
+	
+	<!-- Hit Locations -->
+  <thing
+    id="hlLegRt"
+    name="Right Leg"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="7"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 1
+	  elseif (total < 11) then
+		retval = 2
+	  elseif (total < 16) then
+		retval = 3
+	  elseif (total < 21) then
+		retval = 4
+	  elseif (total < 26) then
+		retval = 5
+	  elseif (total < 31) then
+		retval = 6
+	  elseif (total < 36) then
+		retval = 7
+	  elseif (total < 41) then
+		retval = 8
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 8 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+
+    </thing>	
+	
+	<!-- Hit Locations -->
+  <thing
+    id="hlLegLt"
+    name="Left Leg"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="6"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 1
+	  elseif (total < 11) then
+		retval = 2
+	  elseif (total < 16) then
+		retval = 3
+	  elseif (total < 21) then
+		retval = 4
+	  elseif (total < 26) then
+		retval = 5
+	  elseif (total < 31) then
+		retval = 6
+	  elseif (total < 36) then
+		retval = 7
+	  elseif (total < 41) then
+		retval = 8
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 8 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+    </thing>	
+	
+	<!-- Hit Locations -->
+  <thing
+    id="hlChest"
+    name="Chest"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="4"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 3
+	  elseif (total < 11) then
+		retval = 4
+	  elseif (total < 16) then
+		retval = 5
+	  elseif (total < 21) then
+		retval = 6
+	  elseif (total < 26) then
+		retval = 7
+	  elseif (total < 31) then
+		retval = 8
+	  elseif (total < 36) then
+		retval = 9
+	  elseif (total < 41) then
+		retval = 10
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 10 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+
+    </thing>	
+	
+	<!-- Hit Locations -->
+  <thing
+    id="hlAbdo"
+    name="Abdomen"
+    compset="HitLoc"
+    isunique="yes"
+    description="Description goes here">
+    <tag group="explicit" tag="5"/>
+    <!-- If the race confers any special abilities, bootstrap them here
+    <bootstrap thing="abSample"/>
+    -->
+
+    <!-- Define any script needed to apply changes to traits or other mechanisms -->
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~apply whatever adjustment(s) are needed here
+	  
+      var conval as number
+      var sizval as number
+      var total as number
+	  var retval as number
+	  
+	  conval = #traituser[attrCon] + #traitinplay[attrCon]
+	  sizval = #traituser[attrSiz] + #traitinplay[attrSiz]
+	  total = conval + sizval
+      if (total < 6) then
+		retval = 2
+	  elseif (total < 11) then
+		retval = 3
+	  elseif (total < 16) then
+		retval = 4
+	  elseif (total < 21) then
+		retval = 5
+	  elseif (total < 26) then
+		retval = 6
+	  elseif (total < 31) then
+		retval = 7
+	  elseif (total < 36) then
+		retval = 8
+	  elseif (total < 41) then
+		retval = 9
+	  else
+	  	total = total - 41
+		total = total / 5
+		total = round(total,0,-1)
+		retval = 9 + total
+	  endif
+	  field[trtBonus].value = retval
+      ]]></eval> 
+    
+
+    </thing>
+
+
+  </document>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Form for adding AOEs to skills.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Title template -->
+  <template
+    id="optOptions"
+    name="Options"
+    compset="SkillInfo">
+
+   <portal
+      id="lblopthero"
+      style="lblLeft"
+      showinvalid="yes">
+      <label
+		ismultiline="yes">
+		<labeltext><![CDATA[
+		@text = "Select an option:"
+		]]></labeltext>
+        </label>
+      </portal>
+	  
+   <portal
+      id="lblopt1"
+      style="lblLeft"
+      showinvalid="yes">
+      <label
+		ismultiline="yes">
+		<labeltext><![CDATA[
+		@text = "Select an option:"
+		]]></labeltext>
+        </label>
+      </portal>
+	  
+   <portal
+      id="lblopt2"
+      style="lblLeft"
+      showinvalid="yes">
+      <label
+		ismultiline="yes">
+		<labeltext><![CDATA[
+		@text = "Select an option:"
+		]]></labeltext>
+        </label>
+      </portal>
+	  
+ 	<portal
+	  id="sklopthero"
+	  style="menuNormal"
+	  width="210">
+	<menu_things
+      field="sklChosen"
+      component="Skill" 
+	  usepicks="hero"
+	  candidatefield="TagExOnSkl">
+    </menu_things>
+  </portal>	
+  
+  <portal
+	  id="skillopt1"
+	  style="chsNormal"
+	  width="210">
+	<chooser_table
+      component="SkillOpt"
+	  choosetemplate="SimpleItem"
+	  candidatepick="SkillInfo"
+	  candidatefield="sklOptExp1">
+	  <autotag group="SkillInfo" tag="Option"/>
+    <chosen><![CDATA[
+      if (@ispick = 0) then
+        @text = "{text ff0000}Select an option"
+      else
+        @text = "Option: " & field[name].text
+        endif
+      ]]></chosen>
+    <titlebar>
+      @text = "Choose an option"
+      </titlebar>
+    </chooser_table>
+  </portal>  
+  
+  <portal
+	  id="skillopt2"
+	  style="chsNormal"
+	  width="210">
+	<chooser_table
+      component="SkillOpt"
+	  choosetemplate="SimpleItem"
+	  candidatepick="SkillInfo"
+	  candidatefield="sklOptExp2">
+	  <autotag group="SkillInfo" tag="Option"/>
+    <chosen><![CDATA[
+      if (@ispick = 0) then
+        @text = "{text ff0000}Select an option"
+      else
+        @text = "Option: " & field[name].text
+        endif
+      ]]></chosen>
+    <titlebar>
+      @text = "Choose an option"
+      </titlebar>
+    </chooser_table>
+  </portal>
+
+
+  <position><![CDATA[
+   
+      ~all tables span the full width
+      portal[sklopthero].width = 250
+      portal[skillopt1].width = 250
+      portal[skillopt2].width = 250
+
+      portal[sklopthero].visible = 0
+      if (field[TagExOnSkl].isempty = 0) then
+        portal[sklopthero].visible = 1
+        portal[lblopthero].visible = 1
+        perform portal[sklopthero].alignedge[left,5]
+        perform portal[sklopthero].alignrel[ttob,lblopthero,2]
+        endif
+
+	  portal[skillopt1].visible = 0
+      if (field[sklOptExp1].isempty = 0) then
+        portal[skillopt1].visible = 1
+        portal[lblopt1].visible = 1
+        perform portal[skillopt1].alignedge[left,5]
+        perform portal[lblopt1].alignrel[ttob,sklopthero,10]
+        perform portal[skillopt1].alignrel[ttob,lblopt1,2]
+        endif
+
+	  portal[skillopt2].visible = 0
+      if (field[sklOptExp2].isempty = 0) then
+        portal[skillopt2].visible = 1
+        portal[lblopt2].visible = 1
+        perform portal[skillopt2].alignedge[left,5]
+        perform portal[lblopt2].alignrel[ttob,skillopt1,10]
+        perform portal[skillopt2].alignrel[ttob,lblopt2,2]
+        endif
+
+      ]]></position>
+    </template>	
+
+  <!-- aoe layout
+        
+  -->
+  <layout
+    id="skillmod">
+    <templateref template="optOptions" thing="SkillInfo" taborder="10"/>
+
+    <!-- This script sizes and positions the layout and its child visual elements. -->
+    <position><![CDATA[
+	  ~perform template[optOptions].alignedge[right,0] 
+
+      ]]></position>
+
+    </layout>
+
+
+  <!-- power form
+        This is the "config" form shown to configure a new character within Hero
+        Lab.
+
+        NOTE! The unique id of this form is specially recognized by Hero Lab as
+        the form to be used for character configuration. A form with this id is
+        required within your data files.
+  -->
+  <form
+    id="skill"
+    name="Skill Modifier"
+	entity="entSkill">
+    <layoutref layout="skillmod"/>
+
+    <position><![CDATA[
+      ~render the layout to generate its dimensions
+      perform layout[skillmod].render
+
+      ~set the width and height of the form to the dimensions of the layout
+      width = 320
+      height = 150
+      ]]></position>
+
+    </form>
+
+
+  </document>

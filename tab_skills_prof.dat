@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the definition of the "Abilities" tab panel. This tab is where
+      the user selects the special abilities for the character.
+
+      All public visual elements used with this tab panel start with the prefix "ab"
+      to associate them with the tab.
+-->
+
+<document signature="Hero Lab Data">
+
+
+  <!-- abAbility portal
+        Presents a dynamic table where the user can add special abilities for the
+        character.
+
+        We use the "SimpleItem" template for selecting the special abilities, since
+        all we need is basic information. We use a custom template for showing the
+        selected abilities to highlight auto-added picks based on race selections.
+        In conjunction with this, the "fixedlast" Charact forces all non-deletable
+        picks (i.e. those that are auto-added) to be shown at the bottom of the list.
+
+        We use an "additem" script to highlight whether more abilities need to be
+        selected. This requires that we specify the "addthing" referenced in the
+        script, which is the resource for tracking abilities.
+
+        We use a "candidate" tag expression to limit the choices the user can make.
+        If omitted, all things derived from the "Ability" component will be shown
+        to the user for selection. Using this tagexpr allows us to omit all abilities
+        that have the "Hide.Ability" tag. For example, the Flight ability needs to
+        behave as a normal ability, but we only want it available to characters that
+        select the "Avian" race. By assigning it the "Hide.Ability" tag and using
+        the candidate tagexpr to omit those abilities, Flight cannot be chosen by
+        non-Avian characters but it will also appear in the selected list if the
+        character choosed the Avian race.
+
+        We use a "titlebar" script to replace the default title on the choose form
+        with something more useful. Just like we did on the title portal above, we
+        include the summary information as helpful feedback to the user.
+
+        We use a "description" script to generate the appropriate information for
+        display to the user as a description when choosing special abilities. We
+        call a general procedure for the game system for this purpose.
+
+        We use a "headertitle" script to place a suitable title above the table.
+        The title includes an indication of how many selections have been chosen
+        and how many remain, with appropriate color highlighting to prompt the user.
+  -->
+  <portal
+    id="skSkillPro"
+    style="tblNormal">
+    <table_dynamic
+      component="Skill"
+      showtemplate="proSklPick"
+      choosetemplate="SimpleItem"
+	  headertemplate="proSklPick"
+	  showsortset="SkillType"
+      showfixedlast="yes"
+      addpick="resAbility">
+      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !SkillInfo.Option</list>
+      <candidate>!Hide.Ability</candidate>
+      <titlebar><![CDATA[
+        @text = "Add a Professional Skill - " & hero.child[resAbility].field[resSummary].text
+        ]]></titlebar>
+      <description/>
+      <additem><![CDATA[
+        ~if we're in advancement mode, we've been frozen, so display accordingly
+        if (state.iscreate = 0) then
+          @text = "{text clrgrey}Add Special Abilities Via Advances Tab"
+          done
+          endif
+
+        ~set the color based on whether the proper number of slots are allocated
+        if (field[resLeft].value = 0) then
+          @text = "{text clrgrey}"
+        elseif (field[resLeft].value < 0) then
+          @text = "{text clrwarning}"
+          endif
+        @text &= "Add New Professional Skill"
+        ]]></additem>
+      </table_dynamic>
+    </portal>
+	
+   <!-- baSklPick template
+        Displays one skill within the table of skills. This template is very
+        similar to the one used for Characts. The key differences are that this
+        template is tied to skills and has slightly different margins for closer
+        grouping of the items in the table.
+  -->
+   <template
+    id="proSklPick"
+    name="Skill Pick"
+    compset="Skill"
+    marginhorz="13"
+    marginvert="9">
+
+    <portal
+      id="name"
+      style="lblLeft"
+      showinvalid="yes">
+      <label>
+        <labeltext><![CDATA[
+          var name as string
+		  var comp as number
+
+			comp = compare(linkage[Char1].field[trtAbbrev].text, linkage[Char2].field[trtAbbrev].text)
+			if (comp <> 0) then
+				name = field[shortname].text & " (" & linkage[Char1].field[trtAbbrev].text & "+" & linkage[Char2].field[trtAbbrev].text & ")"
+			else	
+				name = field[shortname].text & " (" & linkage[Char1].field[trtAbbrev].text & "x2)"
+			endif
+          @text = name
+          ]]></labeltext>
+        </label>
+      </portal>
+
+    <portal
+      id="username"
+      style="editNormal">
+      <edit
+        field="UserName"
+		placeholdertext="Enter a custom name..."
+        maxlength="50">
+        </edit>
+      </portal>
+	  
+     <portal
+      id="total"
+      style="lblXLarge">
+      <label>
+        <labeltext><![CDATA[
+          var bonus as number
+          bonus = field[sklRoll].value
+          @text = bonus & "{size 40}%"
+          ]]></labeltext>
+        </label>
+      </portal>
+
+    <portal
+      id="equal"
+      style="lblNormal">
+      <label
+        text="=">
+        </label>
+      </portal>
+
+    <portal
+      id="base"
+      style="lblNormal">
+      <label
+        field="trtUser">
+        </label>
+      </portal>
+
+    <portal
+      id="plus"
+      style="lblNormal">
+      <label
+        text="+">
+        </label>
+      </portal>
+
+    <portal
+      id="bonus"
+      style="lblNormal">
+      <label>
+        <labeltext><![CDATA[
+          var bonus as number
+          bonus = field[trtBonus].value + field[trtInPlay].value
+          @text = bonus
+          ]]></labeltext>
+        </label>
+      </portal>
+	  
+	 <portal
+      id="domain"
+      style="actEdit">
+      <action
+        action="edit">
+        </action>
+      </portal>
+	  
+    <portal
+      id="delete"
+      style="actDelete"
+      tiptext="Click to delete this item">
+      <action
+        action="delete">
+        </action>
+      </portal>
+
+    <!-- Portals used as the header -->
+
+    <portal
+      id="hdrtotal"
+      style="lblNormal"
+      isheader="yes">
+      <label
+        text="Total">
+        </label>
+      </portal>
+
+    <portal
+      id="hdrbase"
+      style="lblNormal"
+      isheader="yes">
+      <label
+        text="Base">
+        </label>
+      </portal>
+
+    <portal
+      id="hdrbonus"
+      style="lblNormal"
+      isheader="yes">
+      <label
+        text="Bonus">
+        </label>
+      </portal>
+	  
+    <portal
+      id="value"
+      style="incrSimple">
+      <incrementer
+        field="trtUser">
+        </incrementer>
+      <mouseinfo><![CDATA[
+        if (hero.tagis[mode.creation] = 0) then
+          @text = "Skills must be modified via the Advances tab once the character is locked for play."
+        elseif (autonomous = 0) then
+          @text = "This trait has been improved via the Advances tab and cannot be modified further from here."
+        else
+          @text = "Allocate points to this skill by clicking on the arrows to increase/decrease the number of points assigned."
+          endif
+        ]]></mouseinfo>
+      </portal>
+
+    <portal
+      id="info"
+      style="actInfoSm">
+      <action
+        action="info">
+        </action>
+        <mouseinfo><![CDATA[
+			~Include any skill options
+			var mouseinfo as string
+			Call MouseInfo
+			if (isgizmo <> 0) then
+				foreach pick in gizmo where "SkillInfo.Option"
+					if (eachpick.field[sklChosen].ischosen <> 0) then
+						mouseinfo &= "{br}{br}" & eachpick.field[sklChosen].chosen.field[UserName].text
+					endif
+				nexteach
+			endif
+			@text = mouseinfo
+        ]]></mouseinfo>
+      </portal>
+
+
+    <position><![CDATA[
+      ~our height is driven by the tallest portal (they're all the same)
+      height = portal[name].height
+      doneif (issizing <> 0)
+
+	  ~position our tallest portal at the top
+      portal[info].top = 0
+
+      ~center the other portals vertically
+
+      ~position the info portal on the far right
+      perform portal[delete].alignedge[right,0]
+
+      ~position the incrementer to the left of the info portal (plus a gap)
+      perform portal[info].alignrel[rtol,delete,-10]
+      perform portal[value].alignrel[rtol,info,-10]
+	  
+      ~setup appropriate widths for the various value portals
+      portal[total].width = 40
+      portal[base].width = 40
+      portal[bonus].width = 40
+
+      ~center everything vertically within the template
+      perform portal[name].centervert
+      perform portal[total].centervert
+      perform portal[base].centervert
+      perform portal[bonus].centervert
+      perform portal[equal].centervert
+      perform portal[plus].centervert
+      perform portal[delete].centervert
+      perform portal[domain].centervert
+      perform portal[username].centervert
+	  
+	  portal[username].visible = 0
+
+      ~position everything horizontally, indenting 125 pixels on each side
+      portal[name].left = 0
+
+      perform portal[bonus].alignrel[rtol,value,-5]
+      perform portal[plus].alignrel[rtol,bonus,-5]
+      perform portal[base].alignrel[rtol,plus,-5]
+      perform portal[equal].alignrel[rtol,base,-5]
+      perform portal[total].alignrel[rtol,equal,-5]
+	  perform portal[domain].alignrel[rtol,total,-5]
+	  
+      ~if this is an auto-added pick, change its font to indicate that fact
+      if (ispick + !candelete >= 2) then
+        perform portal[name].setstyle[lblAuto]
+        endif
+		
+		if (ispick + tagcount[SkillInfo.?] >= 2) then
+			portal[domain].visible = 1
+		endif
+	  
+      ~if this is a "custom" item pick, show an edit portal instead of the name
+      if (ispick <> 0) then
+        if (tagis[Helper.CustomItem] <> 0) then
+          portal[name].visible = 0
+          portal[username].visible = 1
+          portal[username].left = portal[name].left
+          var limit as number
+          limit = portal[total].left - portal[username].left - 5
+          portal[username].width = minimum(200,limit)
+          endif
+      else
+        portal[username].visible = 0
+        endif
+      ]]></position>
+
+    <header><![CDATA[
+      ~our header height is the title plus a gap plus the header text
+      height = 10 + portal[hdrtotal].height
+      doneif (issizing <> 0)
+
+      ~each of our header labels has the same width as the corresponding data beneath
+      portal[hdrtotal].width = portal[total].width
+      portal[hdrbase].width = portal[base].width
+      portal[hdrbonus].width = portal[bonus].width
+
+      ~center each header label on the corresponding data beneath
+      perform portal[hdrtotal].centerpoint[horz,200]
+      perform portal[hdrbase].centerpoint[horz,265]
+      perform portal[hdrbonus].centerpoint[horz,325]
+
+      ~align all header labels at the bottom of the header region
+      perform portal[hdrtotal].alignedge[bottom,0]
+      perform portal[hdrbase].alignedge[bottom,0]
+      perform portal[hdrbonus].alignedge[bottom,0]
+      ]]></header>
+
+    </template>
+
+	
+  <!-- skills layout
+        This layout orchestrates the display of the visual elements that comprise
+        the Abilities tab. This amounts to a title at the top and a dynamic table
+        below where the user can add the special abilities he wants.
+
+        The logic for this layout is similar to (albeit much simpler than) the
+        logic for the Basics tab. So please refer to the Basics tab for more details.
+  -->
+  <layout
+    id="skillprof">
+    <portalref portal="skSkillPro" taborder="10"/>
+
+    <!-- This script sizes and positions the layout and its child visual elements. -->
+    <position><![CDATA[
+      ~freeze our table in advancement mode to disable adding new choices
+      ~Note: All freezing must be done *before* any positioning is performed.
+      if (state.iscreate = 0) then
+        portal[skSkillPro].freeze = 1
+        endif
+
+      ~position and size the table to span the full layout; it will only use the
+      ~vertical space that it actually needs
+      perform portal[skSkillPro].autoplace
+      ]]></position>
+
+    </layout>
+
+
+  <!-- skills panel
+        This is the "Abilities" panel shown within Hero Lab. Since we want this
+        panel to appear after Basics and within the traits grouping, we assign it
+        an "order" of 120.
+
+        The logic for this panel is similar to the logic for the Basics panel, so
+        please refer to the Basics panel for more details.
+  -->
+  <panel
+    id="skillprof"
+    name="Skills (Professional)"
+    marginhorz="5"
+    marginvert="5"
+    order="130">
+    <live>!HideTab.skillprof</live>
+    <layoutref layout="skillprof"/>
+    <position><![CDATA[
+      ~get the height used by the layout and use it, as that means we scroll
+      ~if necessary
+      perform layout[skillprof].render
+      height = layout[skillprof].height
+      ]]></position>
+    </panel>
+  </document>

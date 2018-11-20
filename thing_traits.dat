@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of derived traits for the game system. Derived
+      traits are calculated via scripts and based on the Characts from which they
+      are derived.
+
+      Since derived traits are based upon other traits, we have a "chicken-and-egg"
+      situation with respect to script evaluation timing. The "Trait" component
+      auto-calculates the final value for the traits derived FROM, while the "Derived"
+      component provides a second calculation after that to incorporate the results of
+      the special calculation for each derived trait. Each derived trait must then
+      calculate the new derived value between those two times, which is what we
+      accomplish below within the eval script for each derived trait. The script is
+      timed to occur at Traits/4000 to splice it between the two other scripts that
+      mentioned above and performed by the component.
+
+      We calculate the derived value as a "bonus" for the trait, allowing it to be
+      added in appropriately by the component script. Trait bonuses can arise from
+      multiple sources, so we need to ADD our calculated amount instead of setting the
+      amount.
+
+      All trait values are rounded down, so we apply the proper rounding as needed.
+      Rounding must be performed BEFORE we add the adjustment.
+
+      Appropriate tags are assigned to each derived trait to control where the trait
+      is displayed to the user and the order in which the traits are displayed.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Health Trait -->
+  <thing
+    id="trHP"
+    name="Hit Points"
+    compset="Trait"
+    isunique="yes"
+    description="Hit Points represent how much injury an area of the body can withstand before it becomes useless, possibly resulting in incapacitation, and ultimately the character’s death. The body of every creature is divided into separate locations – humans for example have seven; the head, chest, abdomen, arms, and legs – each location with its own hit points. {br}Some creatures, such as monsters or different classes of animal, by their very nature often have radically different body structures, yet each location they possess still has Hit Points. When a location’s hit points are reduced to a certain level through damage of any kind, then the character suffers certain consequences that reflect the severity of the injury. For further information concerning wounds see page 80.{br} To calculate the Hit Points of each location, add CON and SIZ together and cross-reference on the Hit Points table.">
+    <fieldval field="trtAbbrev" value="HP"/>
+    <tag group="explicit" tag="1"/>
+    <tag group="User" tag="Power"/>
+
+    <!-- Calculate the Health trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      field[trtBonus].value = #trait[attrCon] + #trait[attrSiz]
+      ]]></eval>
+    </thing>
+
+  <!-- Initiative Trait -->
+  <thing
+    id="trInit"
+    name="Initiative Bonus"
+    compset="Trait"
+    isunique="yes"
+    description="The moment at which someone reacts in combat is governed by initiative. Initiative Bonus acts as a modifier to initiative rolls; the higher the bonus, the faster one responds in a combat situation, determining when you can act. Further factors – armour for example – modify it. The Combat chapter goes into more detail on how Initiative works (see page 90).{br} Initiative Bonus is the average of the DEX and INT characteristics.">
+    <fieldval field="trtAbbrev" value="IB"/>
+    <tag group="explicit" tag="5"/>
+    <tag group="User" tag="Combat"/>
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+
+    <!-- Calculate the Initiative trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+	  var avg as number
+	  avg = (#trait[attrDex] + #trait[attrInt]) / 2
+      field[trtBonus].value = round(avg,0,1)
+      ]]></eval>
+    </thing>
+
+  <!-- Defense Trait -->
+  <thing
+    id="trDmgMod"
+    name="Damage Modifier"
+    compset="Trait"
+    isunique="yes"
+    description="The bonus amount of damage a character inflicts when they physically strike or apply force. It is generally used in combat situations, but can also be utilised when attempting to break objects. The damage modifier is an extra die roll which is either added to, or subtracted from, the damage inflicted by the weapon or tool. If a negative damage modifier takes a weapon’s damage to zero or below then no damage at all has been inflicted.">
+    <fieldval field="trtAbbrev" value="DmMod"/>
+    <tag group="explicit" tag="2"/>
+    <tag group="User" tag="Combat"/>
+    <tag group="DashTacCon" tag="Combat"/>
+
+    <!-- Calcualte the Defense trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      field[trtBonus].value = #trait[attrStr] + #trait[attrSiz]
+      ]]></eval>
+	  
+	 <!-- Calc the die output -->
+	  <eval value="2" phase="Render" priority="4000">
+      <after name="Calc trtFinal"/><![CDATA[
+		var row as number
+		if (field[trtFinal].value < 6) then
+			row = 1
+		elseif (field[trtFinal].value < 11) then
+			row = 2
+		elseif (field[trtFinal].value < 16) then
+			row = 3		
+		elseif (field[trtFinal].value < 21) then
+			row = 4	
+		elseif (field[trtFinal].value < 26) then
+			row = 5	
+		elseif (field[trtFinal].value < 31) then
+			row = 6	
+		elseif (field[trtFinal].value < 36) then
+			row = 7
+		elseif (field[trtFinal].value < 41) then
+			row = 8
+		elseif (field[trtFinal].value < 46) then
+			row = 9
+		elseif (field[trtFinal].value < 51) then
+			row = 10
+		elseif (field[trtFinal].value < 61) then
+			row = 11
+		elseif (field[trtFinal].value < 71) then
+			row = 12
+		elseif (field[trtFinal].value < 81) then
+			row = 13
+		elseif (field[trtFinal].value < 91) then
+			row = 14
+		elseif (field[trtFinal].value < 101) then
+			row = 15
+		elseif (field[trtFinal].value < 111) then
+			row = 16
+		elseif (field[trtFinal].value < 121) then
+			row = 17
+		else
+			row = 18
+		endif
+	    perform hero.assignstr["DmgMod." & row]
+		 
+	  
+      ]]></eval>
+    </thing>
+
+  <!-- Power Points Trait -->
+  <thing
+    id="trPowerPts"
+    name="Magic Points"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="MP"/>
+    <tag group="explicit" tag="4"/>
+    <tag group="User" tag="Power"/>
+
+    <!-- Calculate the Power Points trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      field[trtBonus].value = #trait[attrPow]
+      ]]></eval>
+    </thing>
+
+  <!-- Resistance Trait -->
+  <thing
+    id="trAP"
+    name="Action Points"
+    compset="Trait"
+    isunique="yes"
+    description="How often a character can act in a combat round (see the Combat chapter) is determined by Action Points. How they are used is discussed in more detail on page 91.">
+    <fieldval field="trtAbbrev" value="AP"/>
+    <tag group="explicit" tag="1"/>
+    <tag group="User" tag="Resistance"/>
+    <tag group="DashTacCon" tag="Traits"/>
+
+    <!-- Calculate the Resistance trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+	  var val as number
+	  val = #trait[attrInt] + #trait[attrDex]
+	  if (val < 13) then
+		field[trtBonus].value = 1
+	  elseif (val < 25) then
+		field[trtBonus].value = 2
+	  elseif (val < 37) then
+		field[trtBonus].value = 3
+	  else
+		val = val - 37
+		val = val / 12
+		val = round(val,0,-1)
+		field[trtBonus].value = 3 + val
+	  endif
+      ]]></eval>
+    </thing>
+
+  <!-- Experience Modifier Trait -->
+  <thing
+    id="trExpMod"
+    name="Experience Modifier"
+    compset="Trait"
+    isunique="yes"
+    description="Over the course of play characters improve their skills and capabilities. This is achieved through the use of Experience Rolls which are explained in more detail on page 71. A character’s CHA score may adjust the number of Experience Rolls the character has, reflecting the relationship he has with his peers, and his reputation in his community. If CHA is high people are willing to put themselves out to help train or support the character whilst they undergo tuition. Conversely, if CHA is particularly low, there may be some difficulty improving one’s capabilities without the assistance of others; finding someone to spar against for example.">
+    <fieldval field="trtAbbrev" value="XPMod"/>
+    <tag group="explicit" tag="3"/>
+
+    <!-- Assign an appropriate tag based on how the trait should be classified -->
+    <tag group="User" tag="Combat"/>
+    <!--
+    <tag group="User" tag="Power"/>
+    <tag group="User" tag="Resistance"/>
+    -->
+
+    <!-- Assign appropriate tags for how the trait should be shown on the TacCon -->
+    <!--
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    -->
+
+    <!-- Calculate the trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      ~calculate the trait value here, putting the value in the "bonus" field
+	  var val as number
+	  val = #trait[attrCha]
+	  if (val < 7) then
+		field[trtBonus].value = -1
+	  elseif (val < 13) then
+		field[trtBonus].value = 0
+	  elseif (val < 19) then
+		field[trtBonus].value = 1
+	  else
+		val = val - 19
+		val = val / 6
+		val = round(val,0,-1)
+		field[trtBonus].value = 1 + val
+	  endif
+      ]]></eval>
+    </thing>
+	
+  <!-- Heal Rate Trait -->
+  <thing
+    id="trHealRate"
+    name="Healing Rate"
+    compset="Trait"
+    isunique="yes"
+    description="After receiving injuries, a character needs to recuperate. Healing Rate determines how quickly they naturally recover from wounds. Depending on the severity of the injury (see page 80), the Healing Rate denotes how many Hit Points are recovered per day, week or month.">
+    <fieldval field="trtAbbrev" value="Heal"/>
+    <tag group="explicit" tag="4"/>
+
+    <!-- Assign an appropriate tag based on how the trait should be classified -->
+    <tag group="User" tag="Combat"/>
+    <!--
+    <tag group="User" tag="Power"/>
+    <tag group="User" tag="Resistance"/>
+    -->
+
+    <!-- Assign appropriate tags for how the trait should be shown on the TacCon -->
+    <!--
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    -->
+
+    <!-- Calculate the trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      ~calculate the trait value here, putting the value in the "bonus" field
+	  var val as number
+	  val = #trait[attrCon]
+	  if (val < 7) then
+		field[trtBonus].value = 1
+	  elseif (val < 13) then
+		field[trtBonus].value = 2
+	  elseif (val < 19) then
+		field[trtBonus].value = 3
+	  else
+		val = val - 19
+		val = val / 6
+		val = round(val,0,-1)
+		field[trtBonus].value = 1 + val
+	  endif
+      ]]></eval>
+    </thing>	
+	
+  <!-- Luck Points Trait -->
+  <thing
+    id="trLuckPts"
+    name="Luck Points"
+    compset="Trait"
+    isunique="yes"
+    description="Luck Points represent that strange force differentiating adventuring heroes from everyday folk. Call it fate, karma or simple good fortune. Luck Points can be used to:{br}* Re-roll the dice, if they are unfavourable{br}* Mitigate physical damage or other unfortunate circumstances{br}* Gain an edge at a vital moment in combat{br}Exactly how they are used, and when, is described on page 81. Once a Luck Point is spent, the pool decreases; when one is out of Luck Points, no more are available – unless the Games Master makes an impromptu award – until the next game session when they replenish to their normal value.">
+    <fieldval field="trtAbbrev" value="Luck"/>
+    <tag group="explicit" tag="6"/>
+
+    <!-- Assign an appropriate tag based on how the trait should be classified -->
+    <tag group="User" tag="Combat"/>
+    <!--
+    <tag group="User" tag="Power"/>
+    <tag group="User" tag="Resistance"/>
+    -->
+
+    <!-- Assign appropriate tags for how the trait should be shown on the TacCon -->
+    <!--
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    -->
+
+    <!-- Calculate the trait as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      ~calculate the trait value here, putting the value in the "bonus" field
+	  var val as number
+	  val = #trait[attrCon]
+	  if (val < 7) then
+		field[trtBonus].value = 1
+	  elseif (val < 13) then
+		field[trtBonus].value = 2
+	  elseif (val < 19) then
+		field[trtBonus].value = 3
+	  else
+		val = val - 19
+		val = val / 6
+		val = round(val,0,-1)
+		field[trtBonus].value = 1 + val
+	  endif
+      ]]></eval>
+    </thing>
+	
+	
+  <!-- Movement Rate Trait -->
+  <thing
+    id="trMove"
+    name="Movement Rate"
+    compset="Trait"
+    isunique="yes"
+    description="Movement is not calculated from Characteristics but is a default value which differs between species. The base Movement Rate for humans is 6 metres, although certain skills can improve this. The section on Movement, on page 69 offers more detail.">
+    <fieldval field="trtAbbrev" value="Move"/>
+    <tag group="explicit" tag="7"/>
+
+    <!-- Assign an appropriate tag based on how the trait should be classified -->
+    <tag group="User" tag="Combat"/>
+    <!--
+    <tag group="User" tag="Power"/>
+    <tag group="User" tag="Resistance"/>
+    -->
+
+    <!-- Assign appropriate tags for how the trait should be shown on the TacCon -->
+    <!--
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    -->
+
+
+    </thing>
+
+  </document>

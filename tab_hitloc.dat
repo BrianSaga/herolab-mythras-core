@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the definition of the "In-Play" tab panel. This tab is where
+      the user controls in-play adjustments for the character.
+
+      All public visual elements used with this tab panel start with the prefix "ip"
+      to associate them with the tab.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- ipHitLoc portal
+        Presents a table of tracked resources for the character, where the user can
+        adjust the consumption of the resources during play. A two-column display
+        is used for space efficiency.
+
+        We use a "headertitle" script to place a suitable title above the table.
+  -->
+  <portal
+    id="ipHitLoc"
+    style="tblNormal"
+	height="700">
+    <table_fixed
+      component="HitLoc"
+      showtemplate="ipHealth"
+	  showsortset="explicit"
+      columns="1">
+      <headertitle><![CDATA[
+        @text = "Hit Locations"
+        ]]></headertitle>
+      </table_fixed>
+    </portal>
+
+ 
+
+  <!-- ipHealth template
+        This template presents the health of the character and allows the user to
+        apply damage and healing to the character.
+
+        Usage pools on the actor are used to track the various damage and healing
+        actions that are performed on the actor. This allows us to undo actions and
+        clear all damage. It also allows us to retrieve a detailed report of each
+        separate action and present it to the user. All of this is achieved via
+        trigger scripts associated with the various action buttons employed below.
+  -->
+  <template
+    id="ipHealth"
+    name="Hit Location"
+    compset="HitLoc">
+
+    <portal
+      id="lblhealth"
+      style="lblNormal">
+      <label
+        field="name">
+        </label>
+      </portal>
+
+    <portal
+      id="health"
+      style="lblXLarge">
+      <label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = field[hlHPNow].text & "{text clrgrey}{size 40} /" & field[hlHPMax].text
+          if (field[hlHPPenal].value < 0) then
+            @text &= " " & field[hlHPPenal].text
+            endif
+          ]]></labeltext>
+        </label>
+      </portal>
+
+    <portal
+      id="lbldamage"
+      style="lblNormal">
+      <label
+        text="Damage:">
+        </label>
+      </portal>
+
+    <portal
+      id="damage"
+      style="incrSimple"
+      tiptext="Specify the damage or healing quantity to be applied.">
+      <incrementer
+        field="hlDamage">
+        </incrementer>
+      </portal>
+
+    <portal
+      id="sustain"
+      style="actDamage"
+      tiptext="Click here to sustain the quantity specified as damage.">
+      <action
+        action="trigger">
+        <trigger><![CDATA[
+          ~get the various values to operate upon
+          var sustain as number
+          var current as number
+          sustain = field[hlDamage].value
+          current = usagepool[hlHPNet].value
+
+          ~save the adjustment requested by the user and the new net damage
+          perform usagepool[hlHPAdjust].adjust[sustain]
+          perform usagepool[hlHPNet].set[current + sustain]
+
+          ~reset the damage field to ensure that everything gets properly updated
+          perform field[hlDamage].reset
+          ]]></trigger>
+        </action>
+      </portal>
+
+    <portal
+      id="heal"
+      style="actHeal"
+      tiptext="Click here to heal the quantity specified.">
+      <action
+        action="trigger">
+        <trigger><![CDATA[
+          ~get the various values to operate upon
+          var heal as number
+          var current as number
+          heal = field[hlDamage].value
+          current = usagepool[hlHPNet].value
+
+          ~cap any adjustment so we can't go above our natural maximum health
+          var isover as number
+          if (heal > current) then
+            heal = current
+            isover = 1
+            endif
+
+          ~if we're already at our maximum health, there's nothing to do
+          doneif (heal = 0)
+
+          ~save the adjustment requested by the user and the new net damage
+          perform usagepool[hlHPAdjust].adjust[-heal]
+          perform usagepool[hlHPNet].adjust[-heal]
+
+          ~reset the damage field to ensure that everything gets properly updated
+          perform field[hlDamage].reset
+
+          ~if the requested adjustment exceeds the actual damage level, report the error
+          if (isover > 0) then
+            notify "Requested healing adjustment exceeds current damage levels. Actual adjustment differs."
+            endif
+          ]]></trigger>
+        </action>
+      </portal>
+
+    <portal
+      id="undo"
+      style="actUndo"
+      tiptext="Click here to undo the last damage sustained or healed.">
+      <action
+        action="trigger">
+        <trigger><![CDATA[
+          ~if there is no history to undo, notify the user
+          if (usagepool[hlHPNet].count = 0) then
+            notify "Undo history is empty"
+            done
+            endif
+
+          ~rollback the last transaction for both usage pools
+          perform usagepool[hlHPNet].rollback
+          perform usagepool[hlHPAdjust].rollback
+
+          ~reset the damage field to ensure that everything gets properly updated
+          perform field[hlDamage].reset
+          ]]></trigger>
+        </action>
+      </portal>
+
+    <portal
+      id="reset"
+      style="actReset"
+      tiptext="Click here to reset your health to fully healed. All records of past damage sustained and healed will be lost.">
+      <action
+        action="trigger"
+        confirm="This will reset your health to fully healed and discard all history of past damage sustained and healed. Proceed?">
+        <trigger><![CDATA[
+          ~if there is no history to undo, notify the user
+          if (usagepool[hlHPNet].count = 0) then
+            notify "Undo history is empty"
+            done
+            endif
+
+          ~empty out both usage pools
+          perform usagepool[hlHPNet].empty
+          perform usagepool[hlHPAdjust].empty
+          ]]></trigger>
+        </action>
+      </portal>
+
+    <portal
+      id="info"
+      style="actInfoSm">
+      <action
+        action="info">
+        </action>
+      <mouseinfo><![CDATA[
+        ~if our usage pool history is empty, indicate that fact and we're done
+        @text = " Damage History "
+        var history as number
+        history = usagepool[hlHPAdjust].count
+        if (history = 0) then
+          @text = @text & "{br}-none-"
+          done
+          endif
+
+        ~iterate through all elements of the usage pool history and build a report
+        var i as number
+        var cnt as number
+        var form as string
+        for i = 0 to history - 1
+
+          ~get the adjustment for this history entry
+          cnt = usagepool[hlHPAdjust].history[i]
+          if (cnt > 0) then
+            form = "Damage: "
+          else
+            form = "Healed: "
+            cnt = -cnt
+            endif
+
+          ~append the history entry to the overall text being reported
+          @text = @text & "{br}" & form & cnt
+          next
+        ]]></mouseinfo>
+      </portal>
+
+    <position><![CDATA[
+      ~set up our height based on our title, a gap, and our tallest portal
+      height = portal[health].height + 8
+
+      ~if this is a "sizing" calculation, we're done
+      doneif (issizing <> 0)
+
+
+      ~position the tallest portal beneath the title
+      perform portal[health].centervert
+
+      ~center all non-text portals vertically on the health portal
+      perform portal[damage].centeron[vert,health]
+      perform portal[sustain].centeron[vert,health]
+      perform portal[heal].centeron[vert,health]
+      perform portal[undo].centeron[vert,health]
+      perform portal[reset].centeron[vert,health]
+      perform portal[info].centeron[vert,health]
+
+      ~align the smaller text portals to have the same baseline
+      perform portal[lblhealth].alignrel[btob,health,-4]
+      perform portal[lbldamage].alignrel[btob,health,-4]
+
+      ~position the current health portals on the left
+      portal[lblhealth].left = 0
+      portal[health].left = 100
+
+      ~position the damage portals to the right of the current health
+      portal[lbldamage].left = 155
+      perform portal[damage].alignrel[ltor,lbldamage,10]
+
+      ~position the info portal on the far right
+      perform portal[info].alignedge[right,-25]
+
+      ~position the reset portal to the left of the info portal
+      perform portal[reset].alignrel[rtol,info,-10]
+
+      ~position the undo portal to the left of the reset portal
+      perform portal[undo].alignrel[rtol,reset,-10]
+
+      ~position the heal portal to the left of the undo portal
+      perform portal[heal].alignrel[rtol,undo,-20]
+
+      ~position the sustain portal to the left of the heal portal
+      perform portal[sustain].alignrel[rtol,heal,-10]
+
+      ~disable the sustain and heal portals if the current quantity is zero
+      if (field[hlDamage].value = 0) then
+        portal[sustain].enable = 0
+        portal[heal].enable = 0
+        endif
+
+      ~disable the undo and reset portals if there is no history to undo
+      ~if (usagepool[hlHPAdjust].count = 0) then
+       ~ portal[undo].enable = 0
+       ~ portal[reset].enable = 0
+       ~ endif
+      ]]></position>
+
+    </template>
+
+
+  <!-- inplay layout
+        This layout orchestrates the display of the visual elements that comprise
+        the InPlay tab. At the top is the Health section, with trackers beneath for
+        consumable resources that must be managed. At the bottom is the list of
+        in-play adjustments and activated abilities.
+  -->
+  <layout
+    id="hitloc">
+    <portalref portal="ipHitLoc" taborder="10"/>
+
+
+    <!-- This script sizes and positions the layout and its child visual elements. -->
+    <position><![CDATA[
+      ~set the width of all tables so the interior templates size to those widths
+     
+	  portal[ipHitLoc].width = 500
+	  
+      ~set the height of the layout to the bottom of the adjustments table; this
+      ~eliminates any gap at the bottom when used by the direct manipulation form
+      height = portal[ipHitLoc].height
+	  width = portal[ipHitLoc].width
+      ]]></position>
+
+    </layout>
+
+
+  <!-- inplay panel
+        This is the "InPlay" panel shown within Hero Lab. Since we want this panel
+        to appear first within the fourth grouping (inplay), we assign it an "order"
+        of 410.
+
+        The logic for this panel is similar to the logic for the preceeding panels,
+        so please refer to those panels for more details.
+  -->
+  <panel
+    id="hitloc"
+    name="Hit Locations"
+    marginhorz="5"
+    marginvert="5"
+    order="110">
+    <live>!HideTab.hitloc</live>
+    <layoutref layout="hitloc"/>
+    <position><![CDATA[
+      ]]></position>
+    </panel>
+
+
+  </document>

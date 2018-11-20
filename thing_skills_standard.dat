@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of skills for the game system. Note that each
+      skill is linked to an associated Charact for the character. This linkage allows
+      the value of the skill to easily incorporate the effects of the linked Charact
+      via a script on the component.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Athletics (STR+DEX) Skill -->
+  <thing
+    id="skAthletic"
+    name="Athletics"
+    compset="Skill"
+    isunique="yes"
+    description="Athletics covers a range of physical activities, including climbing, jumping, and running. If an adventurer is wearing armour, the distances he can climb, run or jump are affected by the Armour Penalty. The Movement section on page 69 describes these effects.">
+    <fieldval field="trtAbbrev" value="Athl"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrDex"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+	
+	
+  <!-- Boating (STR+CON) Skill -->
+  <thing
+    id="skBoating"
+    name="Boating"
+    compset="Skill"
+    isunique="yes"
+    description="The Boating skill covers the operation of small floating craft on rivers, lakes, and close inshore. Appropriate vessels are generally boats, canoes or rafts which travel short distances, and are unsuited to the rigours of the open sea. Most are propelled using oars, paddles, punts or simple sails; or can even be towed by animals. Ships with large crews or designed for long, overseas journeys are covered under the Seamanship professional skill.{br}The skill measures a character’s competence in propelling a boat in the right direction and dealing with adverse conditions. With no distractions and optimal conditions, a Boating roll is unnecessary, although lesser skilled characters may take longer to get where they need to as they manage the boat’s handling.{br}A critical Boating success increases the vessel’s Movement rate by one tenth.{br}A failed Boating roll implies the boat’s movement rate is halved or it failed to reach its intended destination; for instance navigating to an isolated rock positioned above a waterfall.{br}A fumbled Boating roll indicates losing an oar, taking on water or some other serious inconvenience. If the weather is bad or the water violent, then a fumble causes the boat to capsize.">
+    <fieldval field="trtAbbrev" value="Boat"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrCon"/>
+
+    </thing>	
+	
+  <!-- Brawn (STR+SIZ) Skill -->
+  <thing
+    id="skBrawn"
+    name="Brawn"
+    compset="Skill"
+    isunique="yes"
+    description="Brawn is the efficient application of technique when applying raw physical force. The skill covers acts of applied might, including lifting, breaking, and contests of strength.">
+    <fieldval field="trtAbbrev" value="Brawn"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrSiz"/>
+
+    </thing>	
+	
+  <!-- Conceal (DEX+POW) Skill -->
+  <thing
+    id="skConceal"
+    name="Conceal"
+    compset="Skill"
+    isunique="yes"
+    description="Conceal is the counterpoint to Stealth, being the concealment of large objects rather than the character themselves. For instance conceal could be used to hide a chariot behind some rocks, or sweep away the wheel ruts of the chariot so its path cannot be tracked. The skill is versatile in application, anything from hiding a scroll in a library to disguising the presence of a trap or secret passage.">
+    <fieldval field="trtAbbrev" value="Concl"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>	
+	
+  <!-- Customs (INT x2) Skill -->
+  <thing
+    id="skCustoms"
+    name="Customs"
+    compset="Skill"
+    isunique="yes"
+    description="Customs represents the character’s knowledge of his own community; its social codes, rites, rituals, taboos, and so on. The skill is used when it is essential to accurately interpret or perform any socially important custom or to behave in a particular way.">
+    <fieldval field="trtAbbrev" value="Cust"/>
+    <fieldval field="trtBonus" value="40"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+
+    </thing>	
+	
+  <!-- Dance (DEX+CHA) Skill -->
+  <thing
+    id="skDance"
+    name="Dance"
+    compset="Skill"
+    isunique="yes"
+    description="Customs represents the character’s knowledge of his own community; its social codes, rites, rituals, taboos, and so on. The skill is used when it is essential to accurately interpret or perform any socially important custom or to behave in a particular way.">
+    <fieldval field="trtAbbrev" value="Dance"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrCha"/>
+
+    </thing>
+	
+	
+  <!-- Deceit (INT+CHA) Skill -->
+  <thing
+    id="skDeceit"
+    name="Deceit"
+    compset="Skill"
+    isunique="yes"
+    description="Deceit covers all instances where a character attempts to mask the truth and offer a deceit of some kind; barefaced lying, misleading a guard or even bluffing (or cheating) during a card game. The skill also covers instances where hiding true emotions or motives is necessary (feigning pleasure when one is bitterly disappointed perhaps, or attempting to seem welcoming and open when the opposite is true). Deceit forms a counterpart to the Insight skill, and can be used to oppose Insight rolls when others are attempting to discern either truth or motive.">
+    <fieldval field="trtAbbrev" value="Dect"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+
+    </thing>	
+	
+  <!-- Drive (DEX+POW) Skill -->
+  <thing
+    id="skDrive"
+    name="Drive"
+    compset="Skill"
+    isunique="yes"
+    description="Drive covers the control of wheeled or drawn vehicles, whether by one or more beasts of burden or more esoteric means: such as carts, carriages, chariots or sleds. Drive rolls are needed when a character wants to do something out of the ordinary with a vehicle – traverse treacherous terrain, jump obstacles, and so on. A roll is also necessary if the vehicle being driven is drawn by different beasts than the driver is used to (horses instead of oxen, for example) or there are more or fewer beasts teamed together to pull the vehicle (a fourhorse wagon when the character is used to a two-horse team). In cases where either the beasts or their number are radically unfamiliar, a tiger drawn chariot for example, then the roll should be made more difficult.{br}Where two or more vehicles are contesting with each other, perhaps to overtake or force another off the road, the drivers should determine the result with an opposed Drive test.">
+    <fieldval field="trtAbbrev" value="Drive"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>
+
+ 	
+  <!-- Endurance (CON x2) Skill -->
+  <thing
+    id="skEnduran"
+    name="Endurance"
+    compset="Skill"
+    isunique="yes"
+    description="Endurance is a character’s capacity to endure physical stress, pain, and fatigue. It measures the body’s ability to deal with potentially damaging or debilitating conditions, and is a general gauge of resilience, stamina, and metabolism. Endurance, like its counterpart Willpower, is used in any number of ways, but most specifically to resist the possible effects of injuries, including harmful poisons and disease.">
+    <fieldval field="trtAbbrev" value="Endur"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrCon"/>
+    <link linkage="Char2" thing="attrCon"/>
+
+    </thing>
+
+ 	
+  <!-- Evade (DEX x2) Skill -->
+  <thing
+    id="skEvade"
+    name="Evade"
+    compset="Skill"
+    isunique="yes"
+    description="Evade is used to escape from observed, impending danger, and can be used against ranged weapons (by diving for cover, for example), avoiding traps, changing the engagement distance in combat, and generally getting out of the way of a potential physical hazard. It can also be used as a resistance roll for certain types of magic. Usually Evade will be opposed by another roll, but it may also be a standard roll in its own right. Trying to negate damage by leaping clear of a crashing vehicle, as mentioned in the Drive skill, is an example of a standard Evade roll. The typical circumstances for opposed rolls are as follows:{br}{br}Avoiding Missiles{br}Evade is opposed by the Combat Style of the attacker.{br}{br}Thwarting a Trap{br}Evade is opposed either by the trap’s Potency or its original designer’s skill rating at the time the trap was made or set.{br}{br}Evading a Harmful Spell{br}Opposed by the spell caster’s score in the casting skill.{br}{br}Manoeuvering in Combat{br}Opposed by the attacker’s Evade skill.{br}{br}Again, like Endurance, Evade is most often used in Opposed Tests. When used as a standard test, a critical Evade roll ensures that the evader retains some form of advantage or composure afterwards, such as avoiding all damage or slipping completely clear of further danger.">
+    <fieldval field="trtAbbrev" value="Evade"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <!-- <tag group="DashTacCon" tag="NonCombat"/> -->
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrDex"/>
+
+    </thing>
+
+ 	
+  <!-- First Aid (DEX+INT) Skill -->
+  <thing
+    id="skFirstAid"
+    name="First Aid"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="FirAi"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrInt"/>
+
+    </thing>
+
+ 	
+  <!-- Influence (CHA x2) Skill -->
+  <thing
+    id="skInflu"
+    name="Influence"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Influ"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrCha"/>
+    <link linkage="Char2" thing="attrCha"/>
+
+    </thing>
+
+ 	
+  <!-- Insight (INT+POW) Skill -->
+  <thing
+    id="skInsight"
+    name="Insight"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Insig"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>
+
+ 	
+  <!-- Native Tongue (INT+CHA) Skill -->
+  <thing
+    id="skNative"
+    name="Native Tongue"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="NaTon"/>
+    <fieldval field="trtBonus" value="40"/>
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+
+    </thing>
+ 	
+  <!-- Perception (INT+POW) Skill -->
+  <thing
+    id="skPercept"
+    name="Perception"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Perc"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>
+ 	
+  <!-- Ride (DEX+POW) Skill -->
+  <thing
+    id="skRide"
+    name="Ride"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Ride"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>
+ 	
+  <!-- Sing (POW+CHA) Skill -->
+  <thing
+    id="skSing"
+    name="Sing"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Sing"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+
+    </thing>
+ 	
+  <!-- Stealth (DEX+INT) Skill -->
+  <thing
+    id="skStealth"
+    name="Stealth"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Steal"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrInt"/>
+
+    </thing>
+ 	
+  <!-- Swim (STR+CON) Skill -->
+  <thing
+    id="skSwim"
+    name="Swim"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Swim"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/> 
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrCon"/>
+
+    </thing>
+ 	
+  <!-- Unarmed (STR+DEX) Skill -->
+  <thing
+    id="skUnarmed"
+    name="Unarmed"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Unarm"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <!-- <tag group="DashTacCon" tag="NonCombat"/> -->
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrDex"/>
+
+    </thing>
+
+   <!-- Willpower (POW x2) Skill -->
+  <thing
+    id="skWillp"
+    name="Willpower"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Will"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/> 
+    <tag group="SkillType" tag="Standard"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrPow"/>
+
+    </thing>
+  </document>

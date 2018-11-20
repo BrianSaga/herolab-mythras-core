@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of skills for the game system. Note that each
+      skill is linked to an associated Charact for the character. This linkage allows
+      the value of the skill to easily incorporate the effects of the linked Charact
+      via a script on the component.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Acting (CHA x2) Skill -->
+  <thing
+    id="skActing"
+    name="Acting"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Actin"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrCha"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+	
+	
+  <!-- Acrobatics (STR+DEX) Skill -->
+  <thing
+    id="skAcrobat"
+    name="Acrobatics"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Acro"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrDex"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+  <!-- Art (POW+CHA) Skill -->
+  <thing
+    id="skArt"
+    name="Art"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Art"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+
+    <tag group="SkillType" tag="Prof"/>
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+	  
+		<child
+			entity="entSkill">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="SkillInfo">
+				<assignval field="TagExOnSkl" value="(OnSkill.skArt)"/>
+			</bootstrap>
+		</child>
+    </thing>
+	
+		
+	
+  <!-- Binding (POW+CHA) Skill -->
+  <thing
+    id="skBind"
+    name="Binding"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Bind"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Animism"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+	
+		
+		
+	
+  <!-- Bureaucracy (INT x2) Skill -->
+  <thing
+    id="skBureac"
+    name="Bureaucracy"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Bure"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Animism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+			
+		
+	
+  <!-- Commerce (INT+CHA) Skill -->
+  <thing
+    id="skCommerce"
+    name="Commerce"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Comme"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Animism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>			
+		
+	
+  <!-- Courtesy (INT+CHA) Skill -->
+  <thing
+    id="skCourtesy"
+    name="Courtesy"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Court"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Animism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+	
+			
+	
+  <!-- Craft (DEX+INT) Skill -->
+  <thing
+    id="skCraft"
+    name="Craft"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Craft"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="SkillType" tag="Prof"/>
+    <tag group="Culture" tag="Barbarian"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+	  
+		<child
+			entity="entSkill">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="SkillInfo">
+				<assignval field="TagExOnSkl" value="(OnSkill.skCraft)"/>
+			</bootstrap>
+		</child>
+    </thing>
+	
+		
+			
+	
+  <!-- Culture (INT x2) Skill -->
+  <thing
+    id="skCulture"
+    name="Culture"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Cult"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Animism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+		<child
+			entity="entSkill">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="SkillInfo">
+				<assignval field="TagExOnSkl" value="(OnSkill.skCulture)"/>
+			</bootstrap>
+		</child>
+    </thing>
+	
+		
+	
+  <!-- Devotion (POW+CHA) Skill -->
+  <thing
+    id="skDevotion"
+    name="Devotion"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Devo"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Theism"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+		
+	
+  <!-- Disguise (INT+CHA) Skill -->
+  <thing
+    id="skDisguise"
+    name="Disguise"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Disg"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Theism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>			
+
+  <!-- Engineering (INT x2) Skill -->
+  <thing
+    id="skEngin"
+    name="Engineering"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Engin"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Theism"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+		
+  <!-- Exhort (INT+CHA) Skill -->
+  <thing
+    id="skExhort"
+    name="Exhort"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Exhor"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Theism"/> 
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+		
+  <!-- Folk Magic (POW+CHA) Skill -->
+  <thing
+    id="skFolk"
+    name="Folk Magic"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Folk"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="FolkMagic"/> 
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+	
+		
+  <!-- Gambling (INT+POW) Skill -->
+  <thing
+    id="skGambling"
+    name="Gambling"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Gambl"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="FolkMagic"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+	
+		
+  <!-- Healing (INT+POW) Skill -->
+  <thing
+    id="skHealing"
+    name="Healing"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Heal"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="FolkMagic"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+		
+		
+  <!-- Invocation (INT x2) Skill -->
+  <thing
+    id="skInvoc"
+    name="Invocation"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Invoc"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Sorcery"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+		
+		
+  <!-- Language (INT+CHA) Skill -->
+  <thing
+    id="skLang"
+    name="Language"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Lang"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="Helper" tag="CustomItem"/>
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/> 
+      <after name="Calc trtFinal"/><![CDATA[ 
+      var str as string
+	  str = left(field[UserName].text,11)
+	  if (compare(str,"Language") + field[UserName].isempty = 0) then
+	      trustme
+          field[UserName].text = "Language: " & field[UserName].text
+		  endif
+      ]]></eval> 
+    </thing>
+		
+		
+		
+  <!-- Literacy (INT x2) Skill -->
+  <thing
+    id="skLiteracy"
+    name="Literacy"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Liter"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+		<child
+			entity="entSkill">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="SkillInfo">
+				<autotag group="SkillInfo" tag="Option"/>			
+				<assignval field="TagExOnSkl" value="(thingid.skLang)"/>
+				<assignval field="sklOptExp1" value="(OnSkill.skLiteracy)"/>
+				<assignval field="sklOptExp2" value="(thingid.skLang)"/>
+			</bootstrap>
+		</child>
+    </thing>	
+		
+		
+  <!-- Lockpicking (DEX x2) Skill -->
+  <thing
+    id="skLockpick"
+    name="Lockpicking"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Lockp"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrDex"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+		
+		
+		
+  <!-- Lore (INT x2) Skill -->
+  <thing
+    id="skLore"
+    name="Lore"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Lockp"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+ 
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+			
+		
+		
+  <!-- Mechanisms (DEX+INT) Skill -->
+  <thing
+    id="skMechan"
+    name="Mechanisms"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Mech"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="User" tag="NeedDomain"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrInt"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+		
+		
+  <!-- Meditation (INT+CON) Skill -->
+  <thing
+    id="skMeditat"
+    name="Meditation"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Medit"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Mysticism"/>
+    <!-- <tag group="User" tag="NeedDomain"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCon"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+	
+		
+		
+  <!-- Musicianship (DEX+CHA) Skill -->
+  <thing
+    id="skMusician"
+    name="Musicianship"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Music"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Mysticism"/> -->
+
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+			
+		
+  <!-- Mysticism (POW+CON) Skill -->
+  <thing
+    id="skMystic"
+    name="Mysticism"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Mysti"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Mysticism"/>
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+			
+  <!-- Navigation (INT+POW) Skill -->
+  <thing
+    id="skNavig"
+    name="Navigation"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Navig"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Mysticism"/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+			
+  <!-- Oratory (POW+CHA) Skill -->
+  <thing
+    id="skOratory"
+    name="Oratory"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Orato"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Mysticism"/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+		
+			
+  <!-- Seamanship (INT+CON) Skill -->
+  <thing
+    id="skSeaman"
+    name="Seamanship"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Seama"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Mysticism"/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCon"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+			
+			
+  <!-- Seduction (INT+CHA) Skill -->
+  <thing
+    id="skSeduct"
+    name="Seduction"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Seduc"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Mysticism"/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+				
+			
+  <!-- Shaping (INT+POW) Skill -->
+  <thing
+    id="skShaping"
+    name="Shaping"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Shapi"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Sorcery"/>
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrPow"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+					
+			
+  <!-- Sleight (DEX+CHA) Skill -->
+  <thing
+    id="skSleight"
+    name="Sleight"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Sleig"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Sorcery/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrDex"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+						
+			
+  <!-- Streetwise (POW+CHA) Skill -->
+  <thing
+    id="skStreetw"
+    name="Streetwise"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Stree"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Sorcery/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+							
+			
+  <!-- Survival (CON+POW) Skill -->
+  <thing
+    id="skSurvive"
+    name="Survival"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Stree"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Sorcery/> -->
+    <!-- <tag group="User" tag="NeedDomain"/> -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrPow"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>
+	
+	
+	
+  <!-- Teach (INT+CHA) Skill -->
+  <thing
+    id="skTeach"
+    name="Teach"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Teach"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+
+ 
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCha"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+  <!-- Track (INT+CON) Skill -->
+  <thing
+    id="skTrack"
+    name="Track"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Track"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Sorcery/> -->
+    <!-- <tag group="User" tag="NeedDomain"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCon"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+  <!-- Trance (POW+CON) Skill -->
+  <thing
+    id="skTrance"
+    name="Trance"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Tranc"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <tag group="SkillType" tag="Animism"/>
+    <!-- <tag group="User" tag="NeedDomain"/>  -->
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrCon"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <!-- <eval value="1" phase="Traits" priority="4000"> -->
+      <!-- <before name="Derived trtFinal"/> -->
+      <!-- <after name="Calc trtFinal"/><![CDATA[ -->
+	  <!-- var val as number -->
+	  <!-- val = linkage[Char1].field[trtFinal].value + linkage[Char2].field[trtFinal].value -->
+      <!-- field[trtBonus].value = val -->
+      <!-- ]]></eval> -->
+    </thing>	
+	
+  <!-- Combat Style (STR+DEX) Skill -->
+  <thing
+    id="skCombatSt"
+    name="Combat Style"
+    compset="Skill"
+    isunique="no"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Comb"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Prof"/>
+    <!-- <tag group="SkillType" tag="Animism"/> -->
+    <tag group="Helper" tag="CustomItem"/> 
+
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrStr"/>
+    <link linkage="Char2" thing="attrDex"/>
+	
+    <!-- Calculate the skill as appropriate -->
+    <eval value="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/> 
+      <after name="Calc trtFinal"/><![CDATA[ 
+      var str as string
+	  str = left(field[UserName].text,11)
+	  if (compare(str,"Combat Style") + field[UserName].isempty = 0) then
+	      trustme
+          field[UserName].text = "Combat Style: " & field[UserName].text
+		  endif
+      ]]></eval> 
+    </thing>	
+	
+
+  </document>

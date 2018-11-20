@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains all specifications pertaining to the operational control of
+      the data files. This includes usage pools, sources, sortsets, and other related
+      mechanisms.
+-->
+
+<document signature="Hero Lab Structure">
+
+  <!-- The "usagepool" elements allow the definition of usage pools that Hero Lab
+        will create and manage appropriately. Each usage pool can be tracked and
+        maintained uniquely for each actor, or can be associated with individual picks.
+  -->
+
+  <!-- Track up to 30 slots of damage adjustments applied
+        NOTE! We use the adjustments to enable undoing of each level -->
+  <usagepool
+    id="hlHPAdjust"
+    name="Damage Adjustment"
+    abbrev="Dmg"
+    ishero="no"
+    maximum="30"
+    persist="yes"/>
+
+  <!-- Track up to 30 slots of net damage sustained after each adjustment -->
+  <usagepool
+    id="hlHPNet"
+    name="Net Damage Sustained"
+    abbrev="Dmg"
+    ishero="no"
+    maximum="30"
+    persist="yes"/>
+
+   </document>
