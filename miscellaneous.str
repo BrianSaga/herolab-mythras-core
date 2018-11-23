@@ -420,7 +420,7 @@
     <!-- Make sure the choose template has enough width for our names -->
     <tag group="SimpleItem" tag="width300"/>
    <!-- Assign the tag to the container -->
-    <eval index="1" phase="Setup" priority="1000"><![CDATA[
+    <eval index="1" phase="Setup" priority="5000"><![CDATA[
       perform forward[Culture.?]
       perform forward[SkillSrc.?,parent]
 	  
@@ -440,7 +440,7 @@
     <!-- Make sure the choose template has enough width for our names -->
     <tag group="SimpleItem" tag="width300"/>
     <!-- Assign the tag to the container -->
-    <eval index="1" phase="Setup" priority="1000"><![CDATA[
+    <eval index="1" phase="Setup" priority="5000"><![CDATA[
       perform forward[Career.?]
       perform forward[SkillSrc.?,parent]
 	  
