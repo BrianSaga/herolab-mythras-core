@@ -498,7 +498,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
-    <!-- <tag group="SkillType" tag="FolkMagic"/>  -->
+	
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -663,7 +665,8 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
  
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -759,7 +762,8 @@
     <tag group="SkillType" tag="Prof"/>
     <!-- <tag group="SkillType" tag="Mysticism"/> -->
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -821,6 +825,8 @@
     <!-- <tag group="SkillType" tag="Mysticism"/> -->
     <!-- <tag group="User" tag="NeedDomain"/> -->
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -883,6 +889,9 @@
     <!-- <tag group="SkillType" tag="Mysticism"/> -->
     <!-- <tag group="User" tag="NeedDomain"/> -->
 
+	
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -1035,9 +1044,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
-    <!-- <tag group="SkillType" tag="Sorcery/> -->
-    <!-- <tag group="User" tag="NeedDomain"/> -->
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
@@ -1097,8 +1106,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
-    <!-- <tag group="SkillType" tag="Sorcery/> -->
-    <!-- <tag group="User" tag="NeedDomain"/>  -->
+
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -1162,7 +1172,7 @@
     <tag group="Helper" tag="CustomItem"/> 
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="Culture" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>

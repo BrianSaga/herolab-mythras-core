@@ -414,7 +414,7 @@
   -->
   <component
     id="Culture"
-    name="Culture Info">
+    name="Culture">
 
     <identity group="Culture"/>
     <!-- Make sure the choose template has enough width for our names -->
@@ -423,6 +423,8 @@
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
       perform forward[Culture.?]
       perform forward[SkillSrc.?,parent]
+	  
+	  perform hero.delete[HideTab.skillprof]
       ]]></eval>	
 
     </component>
@@ -432,15 +434,17 @@
         the tables on the NPC tab.
   -->
   <component
-    id="Profession"
-    name="Profession Info">
-    <identity group="Profession"/>
+    id="Career"
+    name="Career">
+    <identity group="Career"/>
     <!-- Make sure the choose template has enough width for our names -->
     <tag group="SimpleItem" tag="width300"/>
     <!-- Assign the tag to the container -->
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
-      perform forward[Profession.?]
+      perform forward[Career.?]
       perform forward[SkillSrc.?,parent]
+	  
+	  perform hero.delete[HideTab.skillprof]
       ]]></eval>	
 
 

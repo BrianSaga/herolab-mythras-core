@@ -271,7 +271,13 @@
       perform field[acType].chosen.forward[CharType.?]
 	  
       ~Hide the hit locations tab initially until a hit location template is chosen
-	  perform hero.assign[HideTab.hitloc]
+	  perform hero.assign[HideTab.hitloc]      
+	  
+	  ~Hide the prof skills tab initially until a culture is chosen
+	  perform hero.assign[HideTab.skillprof]
+
+	  ~Hide the abilities tab initially until I figure out what to do with it
+	  perform hero.assign[HideTab.abilities]
       ]]></eval>
 
     </component>
