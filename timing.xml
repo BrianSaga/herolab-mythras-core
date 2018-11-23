@@ -222,11 +222,11 @@
     <priority priority="1000">
       <task name="Thing resXP: Calc XP Max">
         </task>
+      <task name="Component Career: Eval Script #1">
+        </task>
       <task name="Component Culture: Eval Script #1">
         </task>
       <task name="Component Personal: Eval Script #1">
-        </task>
-      <task name="Component Profession: Eval Script #1">
         </task>
       <task name="Component SkillInfo: Eval Script #1">
         </task>
