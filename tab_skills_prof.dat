@@ -59,6 +59,10 @@
       addpick="resAbility">
       <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !SkillInfo.Option</list>
       <candidate>!Hide.Ability</candidate>
+	  <needtag
+		container="SkillSrc"
+		thing="SkillSrc"
+		usehero="yes" />
       <titlebar><![CDATA[
         @text = "Add a Professional Skill - " & hero.child[resAbility].field[resSummary].text
         ]]></titlebar>

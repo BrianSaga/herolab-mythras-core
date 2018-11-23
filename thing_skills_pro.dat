@@ -1157,9 +1157,12 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
+
     <!-- <tag group="SkillType" tag="Animism"/> -->
     <tag group="Helper" tag="CustomItem"/> 
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="Culture" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>

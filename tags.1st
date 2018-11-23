@@ -376,5 +376,12 @@
     sequence="explicit">
 		<value id="Option"/>
     </group>
+
+	<group
+    id="SkillSrc"
+    sequence="explicit">
+		<value id="Barbarian"/>
+		<value id="Primitive"/>
+    </group>
 	
   </document>

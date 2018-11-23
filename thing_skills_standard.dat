@@ -20,6 +20,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
+	
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -50,6 +53,8 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>
@@ -70,6 +75,8 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>
@@ -110,6 +117,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
+	
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -193,7 +203,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrCon"/>
     <link linkage="Char2" thing="attrCon"/>
@@ -235,7 +247,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -282,6 +296,28 @@
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrPow"/>
 
+    </thing> 
+	
+  <!-- Locale (INTx2) Skill -->
+  <thing
+    id="skLocale"
+    name="Locale"
+    compset="Skill"
+    isunique="yes"
+    description=" ">
+    <fieldval field="trtAbbrev" value="Local"/>
+
+    <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <tag group="SkillType" tag="Standard"/>
+
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+
+    <!-- Specify the Charact to which this skill is linked -->
+    <link linkage="Char1" thing="attrInt"/>
+    <link linkage="Char2" thing="attrInt"/>
+
     </thing>
 
  	
@@ -298,7 +334,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -318,7 +356,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -339,6 +379,9 @@
     <tag group="SkillType" tag="Standard"/>
 
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Barbarian"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrPow"/>

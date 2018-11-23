@@ -203,8 +203,12 @@
       </portal>
 
     <position><![CDATA[
+      ~for culture and profession skill purchases -- hide everything till we reveal them as appropriate	
+	  portal[value].visible = 0  
+
       ~our height is driven by the tallest portal (they're all the same)
       height = portal[name].height
+
       doneif (issizing <> 0)
 
 	  ~position our tallest portal at the top
@@ -219,7 +223,7 @@
       perform portal[value].alignrel[rtol,info,-10]
 	  
       ~setup appropriate widths for the various value portals
-      portal[total].width = 40
+      portal[total].width = 40 
       portal[base].width = 40
       portal[bonus].width = 40
 
@@ -244,6 +248,12 @@
       if (ispick + !candelete >= 2) then
         perform portal[name].setstyle[lblAuto]
         endif
+
+	  if (hero.tagis[SkillSrc.?] > 0) then
+		if (hero.tagmatch[SkillSrc,SkillSrc,current] <> 0) then
+			portal[value].visible = 1  
+		endif
+	  endif		
       ]]></position>
 
     <header><![CDATA[

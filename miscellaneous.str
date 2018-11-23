@@ -422,6 +422,7 @@
    <!-- Assign the tag to the container -->
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
       perform forward[Culture.?]
+      perform forward[SkillSrc.?,parent]
       ]]></eval>	
 
     </component>
@@ -439,6 +440,7 @@
     <!-- Assign the tag to the container -->
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
       perform forward[Profession.?]
+      perform forward[SkillSrc.?,parent]
       ]]></eval>	
 
 
