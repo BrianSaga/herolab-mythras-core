@@ -47,7 +47,7 @@
         and how many remain, with appropriate color highlighting to prompt the user.
   -->
   <portal
-    id="skSkillPro"
+    id="skSkillClt"
     style="tblNormal">
     <table_dynamic
       component="Skill"
