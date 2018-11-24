@@ -57,7 +57,7 @@
 	  showsortset="SkillType"
       showfixedlast="yes"
       addpick="resAbility">
-      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !SkillInfo.Option</list>
+      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !GizInfo.Option</list>
       <candidate>!Hide.Ability</candidate>
 	  <needtag
 		container="SkillSrc"
@@ -250,9 +250,9 @@
 			var mouseinfo as string
 			Call MouseInfo
 			if (isgizmo <> 0) then
-				foreach pick in gizmo where "SkillInfo.Option"
-					if (eachpick.field[sklChosen].ischosen <> 0) then
-						mouseinfo &= "{br}{br}" & eachpick.field[sklChosen].chosen.field[UserName].text
+				foreach pick in gizmo where "GizInfo.Option"
+					if (eachpick.field[gizChosen].ischosen <> 0) then
+						mouseinfo &= "{br}{br}" & eachpick.field[gizChosen].chosen.field[UserName].text
 					endif
 				nexteach
 			endif
@@ -311,7 +311,7 @@
         perform portal[name].setstyle[lblAuto]
         endif
 		
-		if (ispick + tagcount[SkillInfo.?] >= 2) then
+		if (ispick + tagcount[GizInfo.?] >= 2) then
 			portal[domain].visible = 1
 		endif
 	  

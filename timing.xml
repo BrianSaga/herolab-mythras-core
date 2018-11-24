@@ -92,7 +92,7 @@
   <depends name="Field trtUser: Bound trtUser" phase="Traits" priority="1000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     </depends>
-  <depends name="Component SkillOpt: Eval Script #2" phase="Traits" priority="1500">
+  <depends name="Component GizOption: Eval Script #2" phase="Traits" priority="1500">
     <before name="Field resLeft: Calc resLeft" phase="Final" priority="1000"/>
     <after name="Field trtUser: Bound trtUser" phase="Traits" priority="1000"/>
     </depends>
@@ -222,11 +222,11 @@
     <priority priority="1000">
       <task name="Thing resXP: Calc XP Max">
         </task>
+      <task name="Component GizInfo: Eval Script #1">
+        </task>
+      <task name="Component GizOption: Eval Script #1">
+        </task>
       <task name="Component Personal: Eval Script #1">
-        </task>
-      <task name="Component SkillInfo: Eval Script #1">
-        </task>
-      <task name="Component SkillOpt: Eval Script #1">
         </task>
       <task name="Thing resAbility: Eval Script #1">
         </task>
@@ -340,7 +340,7 @@
         </task>
       </priority>
     <priority priority="1500">
-      <task name="Component SkillOpt: Eval Script #2">
+      <task name="Component GizOption: Eval Script #2">
         </task>
       </priority>
     <priority priority="3000">

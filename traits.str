@@ -486,14 +486,14 @@
         Used for tracking modifiers on powers
   -->
   <component
-    id="SkillInfo"
-    name="Skill Info"
+    id="GizInfo"
+    name="Gizmo Info"
     autocompset="no"
 	ispublic="no">
 
     <!-- Tracks the selection made when a menu choice is required -->
     <field
-      id="sklChosen"
+      id="gizChosen"
       name="Chosen Thing / Pick"
       type="user"
       style="menu">
@@ -501,7 +501,7 @@
 	  
     <!-- Tag applied when picked -->
     <field
-      id="sklTagExp"
+      id="gizTagExp"
       name="Tag Expression"
       type="derived"
       maxlength="200">
@@ -509,7 +509,7 @@
 
     <!-- Tag applied when power options picked -->
     <field
-      id="TagExOnSkl"
+      id="TagExOnThg"
       name="Tag Expression"
       type="derived"
       maxlength="200">
@@ -517,7 +517,7 @@
 
 	  <!-- Tag applied when power options picked -->
     <field
-      id="sklOptExp1"
+      id="gizOptExp1"
       name="Tag Expression"
       type="derived"
       maxlength="200">
@@ -525,7 +525,7 @@
 
 	  <!-- Tag applied when power options picked -->
     <field
-      id="sklOptExp2"
+      id="gizOptExp2"
       name="Tag Expression"
       type="derived"
       maxlength="200">
@@ -533,7 +533,7 @@
 	
     <!-- Assign the tag to the container -->
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
-      perform forward[SkillInfo.?,parent]
+      perform forward[GizInfo.?,parent]
       ]]></eval>
 
     </component>
@@ -592,16 +592,16 @@
     </compset>
 
  <compset
-    id="SkillInfo">
-    <compref component="SkillInfo"/>
+    id="GizInfo">
+    <compref component="GizInfo"/>
     <compref component="Custom"/>
     </compset>
 	
   <!-- Entity for skill -->
    <entity
-	  id="entSkill"
-	  defaultthing="SkillInfo"
-	  form="skill">
+	  id="entConfig"
+	  defaultthing="GizInfo"
+	  form="gizoption">
 	  <!-- <bootstrap thing="PowerInfo"/> -->
 	  </entity>
   </document>

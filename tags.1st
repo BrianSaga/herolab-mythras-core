@@ -372,7 +372,7 @@
     </group>
 
 	<group
-    id="SkillInfo"
+    id="GizInfo"
     sequence="explicit">
 		<value id="Option"/>
     </group>
@@ -382,6 +382,17 @@
     sequence="explicit">
 		<value id="Barbarian"/>
 		<value id="Primitive"/>
+		<value id="Nomadic"/>
+		<value id="Civilised"/>
+    </group>
+
+	<group
+    id="CultureOpt"
+    sequence="explicit">
+		<value id="cuBarbar"/>
+		<value id="cuPrim"/>
+		<value id="cuNomadic"/>
+		<value id="cuCivil"/>
     </group>
 	
   </document>

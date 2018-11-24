@@ -98,7 +98,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -163,7 +165,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -183,7 +187,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -206,7 +212,8 @@
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="Primitive"/>
+	<tag group="SkillSrc" tag="Nomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrCon"/>
@@ -253,6 +260,7 @@
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
+	<tag group="SkillSrc" tag="Nomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -274,7 +282,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrCha"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -295,7 +305,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -317,8 +329,10 @@
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
-
+    <tag group="SkillSrc" tag="Primitive"/>
+	<tag group="SkillSrc" tag="Nomadic"/>	
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -364,7 +378,8 @@
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>		
+    <tag group="SkillSrc" tag="Primitive"/>
+	<tag group="SkillSrc" tag="Nomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -429,7 +444,8 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="Primitive"/>
+	<tag group="SkillSrc" tag="Nomadic"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -490,7 +506,9 @@
     <tag group="DashTacCon" tag="NonCombat"/> 
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
     <link linkage="Char2" thing="attrPow"/>

@@ -9,7 +9,7 @@
   <template
     id="optOptions"
     name="Options"
-    compset="SkillInfo">
+    compset="GizInfo">
 
    <portal
       id="lblopthero"
@@ -52,23 +52,23 @@
 	  style="menuNormal"
 	  width="210">
 	<menu_things
-      field="sklChosen"
+      field="gizChosen"
       component="Skill" 
 	  usepicks="hero"
-	  candidatefield="TagExOnSkl">
+	  candidatefield="TagExOnThg">
     </menu_things>
   </portal>	
   
   <portal
-	  id="skillopt1"
+	  id="GizOption1"
 	  style="chsNormal"
 	  width="210">
 	<chooser_table
-      component="SkillOpt"
+      component="GizOption"
 	  choosetemplate="SimpleItem"
-	  candidatepick="SkillInfo"
-	  candidatefield="sklOptExp1">
-	  <autotag group="SkillInfo" tag="Option"/>
+	  candidatepick="GizInfo"
+	  candidatefield="gizOptExp1">
+	  <autotag group="GizInfo" tag="Option"/>
     <chosen><![CDATA[
       if (@ispick = 0) then
         @text = "{text ff0000}Select an option"
@@ -83,15 +83,15 @@
   </portal>  
   
   <portal
-	  id="skillopt2"
+	  id="GizOption2"
 	  style="chsNormal"
 	  width="210">
 	<chooser_table
-      component="SkillOpt"
+      component="GizOption"
 	  choosetemplate="SimpleItem"
-	  candidatepick="SkillInfo"
-	  candidatefield="sklOptExp2">
-	  <autotag group="SkillInfo" tag="Option"/>
+	  candidatepick="GizInfo"
+	  candidatefield="gizOptExp2">
+	  <autotag group="GizInfo" tag="Option"/>
     <chosen><![CDATA[
       if (@ispick = 0) then
         @text = "{text ff0000}Select an option"
@@ -110,33 +110,33 @@
    
       ~all tables span the full width
       portal[sklopthero].width = 250
-      portal[skillopt1].width = 250
-      portal[skillopt2].width = 250
+      portal[GizOption1].width = 250
+      portal[GizOption2].width = 250
 
       portal[sklopthero].visible = 0
-      if (field[TagExOnSkl].isempty = 0) then
+      if (field[TagExOnThg].isempty = 0) then
         portal[sklopthero].visible = 1
         portal[lblopthero].visible = 1
         perform portal[sklopthero].alignedge[left,5]
         perform portal[sklopthero].alignrel[ttob,lblopthero,2]
         endif
 
-	  portal[skillopt1].visible = 0
-      if (field[sklOptExp1].isempty = 0) then
-        portal[skillopt1].visible = 1
+	  portal[GizOption1].visible = 0
+      if (field[gizOptExp1].isempty = 0) then
+        portal[GizOption1].visible = 1
         portal[lblopt1].visible = 1
-        perform portal[skillopt1].alignedge[left,5]
+        perform portal[GizOption1].alignedge[left,5]
         perform portal[lblopt1].alignrel[ttob,sklopthero,10]
-        perform portal[skillopt1].alignrel[ttob,lblopt1,2]
+        perform portal[GizOption1].alignrel[ttob,lblopt1,2]
         endif
 
-	  portal[skillopt2].visible = 0
-      if (field[sklOptExp2].isempty = 0) then
-        portal[skillopt2].visible = 1
+	  portal[GizOption2].visible = 0
+      if (field[gizOptExp2].isempty = 0) then
+        portal[GizOption2].visible = 1
         portal[lblopt2].visible = 1
-        perform portal[skillopt2].alignedge[left,5]
-        perform portal[lblopt2].alignrel[ttob,skillopt1,10]
-        perform portal[skillopt2].alignrel[ttob,lblopt2,2]
+        perform portal[GizOption2].alignedge[left,5]
+        perform portal[lblopt2].alignrel[ttob,GizOption1,10]
+        perform portal[GizOption2].alignrel[ttob,lblopt2,2]
         endif
 
       ]]></position>
@@ -146,8 +146,8 @@
         
   -->
   <layout
-    id="skillmod">
-    <templateref template="optOptions" thing="SkillInfo" taborder="10"/>
+    id="confmod">
+    <templateref template="optOptions" thing="GizInfo" taborder="10"/>
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
     <position><![CDATA[
@@ -167,14 +167,14 @@
         required within your data files.
   -->
   <form
-    id="skill"
-    name="Skill Modifier"
-	entity="entSkill">
-    <layoutref layout="skillmod"/>
+    id="gizoption"
+    name="Gizmo Options"
+	entity="entConfig">
+    <layoutref layout="confmod"/>
 
     <position><![CDATA[
       ~render the layout to generate its dimensions
-      perform layout[skillmod].render
+      perform layout[confmod].render
 
       ~set the width and height of the form to the dimensions of the layout
       width = 320

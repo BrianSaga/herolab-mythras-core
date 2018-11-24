@@ -76,9 +76,11 @@
 
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
-
     <tag group="SkillType" tag="Prof"/>
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -93,10 +95,10 @@
       <!-- ]]></eval> -->
 	  
 		<child
-			entity="entSkill">
+			entity="entConfig">
 			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="SkillInfo">
-				<assignval field="TagExOnSkl" value="(OnSkill.skArt)"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(OnSkill.skArt)"/>
 			</bootstrap>
 		</child>
     </thing>
@@ -180,7 +182,9 @@
     <tag group="SkillType" tag="Prof"/>
     <!-- <tag group="SkillType" tag="Animism"/> -->
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -210,7 +214,9 @@
     <tag group="SkillType" tag="Prof"/>
     <!-- <tag group="SkillType" tag="Animism"/> -->
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -245,7 +251,9 @@
     <tag group="SkillSrc" tag="Barbarian"/>
     <tag group="SkillSrc" tag="Primitive"/>	
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -260,10 +268,10 @@
       <!-- ]]></eval> -->
 	  
 		<child
-			entity="entSkill">
+			entity="entConfig">
 			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="SkillInfo">
-				<assignval field="TagExOnSkl" value="(OnSkill.skCraft)"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(OnSkill.skCraft)"/>
 			</bootstrap>
 		</child>
     </thing>
@@ -299,10 +307,10 @@
       <!-- field[trtBonus].value = val -->
       <!-- ]]></eval> -->
 		<child
-			entity="entSkill">
+			entity="entConfig">
 			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="SkillInfo">
-				<assignval field="TagExOnSkl" value="(OnSkill.skCulture)"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(OnSkill.skCulture)"/>
 			</bootstrap>
 		</child>
     </thing>
@@ -568,7 +576,9 @@
     <tag group="SkillType" tag="Prof"/>
     <tag group="Helper" tag="CustomItem"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -614,13 +624,13 @@
       <!-- field[trtBonus].value = val -->
       <!-- ]]></eval> -->
 		<child
-			entity="entSkill">
+			entity="entConfig">
 			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="SkillInfo">
-				<autotag group="SkillInfo" tag="Option"/>			
-				<assignval field="TagExOnSkl" value="(thingid.skLang)"/>
-				<assignval field="sklOptExp1" value="(OnSkill.skLiteracy)"/>
-				<assignval field="sklOptExp2" value="(thingid.skLang)"/>
+			<bootstrap thing="GizInfo">
+				<autotag group="GizInfo" tag="Option"/>			
+				<assignval field="TagExOnThg" value="(thingid.skLang)"/>
+				<assignval field="gizOptExp1" value="(OnSkill.skLiteracy)"/>
+				<assignval field="gizOptExp2" value="(thingid.skLang)"/>
 			</bootstrap>
 		</child>
     </thing>	
@@ -673,7 +683,8 @@
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
     <tag group="SkillSrc" tag="Primitive"/>	
-
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -687,10 +698,10 @@
       <!-- field[trtBonus].value = val -->
       <!-- ]]></eval> -->
 		<child
-			entity="entSkill">
+			entity="entConfig">
 			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="SkillInfo">
-				<assignval field="TagExOnSkl" value="(OnSkill.skLore)"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(OnSkill.skLore)"/>
 			</bootstrap>
 		</child>
     </thing>	
@@ -778,7 +789,8 @@
 	<!-- Tag the cultures and professions for which this skill is legal -->
     <tag group="SkillSrc" tag="Barbarian"/>
     <tag group="SkillSrc" tag="Primitive"/>	
-
+    <tag group="SkillSrc" tag="Civilised"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -1028,8 +1040,9 @@
     <!-- If this skill should be shown as an out-of-combat skill on the TacCon, assign this tag    -->
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Prof"/>
-    <!-- <tag group="SkillType" tag="Sorcery/> -->
-    <!-- <tag group="User" tag="NeedDomain"/> -->
+	
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="Civilised"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->

@@ -455,17 +455,17 @@
         Used for picking options on Powers
   -->
   <component
-    id="SkillOpt"
-    name="Skill Option"
+    id="GizOption"
+    name="Gizmo Option"
     autocompset="yes"
     hasshortname="yes"
 	ispublic="yes">
 	  
-	<identity group="SkillOpt"/>
+	<identity group="GizOption"/>
  
     <!-- Assign the tag to the container -->
     <eval index="1" phase="Setup" priority="1000"><![CDATA[
-      perform forward[SkillOpt.?,parent]
+      perform forward[GizOption.?,parent]
       ]]></eval>	
 	  
     <!-- Each Bonus must be costed to account for the HP multiplier -->

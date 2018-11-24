@@ -11,9 +11,9 @@
 
   <!-- Skill Info thing -->
   <thing
-    id="SkillInfo"
+    id="GizInfo"
     name="Skill Info"
-    compset="SkillInfo">
+    compset="GizInfo">
     </thing>  
 
   <!-- Damage transaction handler for use when applying damage on the In-Play tab -->
