@@ -47,7 +47,7 @@
     <tag group="User" tag="CreateOnly"/>
 	
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Primitive"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
 
     <!-- Define any appropriate pre-requisites for the ability
     <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
@@ -72,7 +72,7 @@
     <!-- If the ability can only be selected at character creation, assign this tag  -->
     <tag group="User" tag="CreateOnly"/>
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
  
 
     <!-- Define any appropriate pre-requisites for the ability
@@ -92,7 +92,7 @@
     <!-- If the ability can only be selected at character creation, assign this tag  -->
     <tag group="User" tag="CreateOnly"/>
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Nomadic"/>
+    <tag group="SkillSrc" tag="cuNomadic"/>
  
 
     <!-- Define any appropriate pre-requisites for the ability
@@ -119,7 +119,7 @@
     <!-- If the ability can only be selected at character creation, assign this tag  -->
     <tag group="User" tag="CreateOnly"/>
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
  
 
     <!-- Define any appropriate pre-requisites for the ability

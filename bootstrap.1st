@@ -21,7 +21,9 @@
   <!-- Add all skills to the actor -->
   <enmasse><![CDATA[
     component.Skill & SkillType.Standard
-    ]]></enmasse>
+    ]]>
+	<autotag group="Helper" tag="Enmasse"/>
+	</enmasse>
 
   <!-- Add all derived traits to the actor -->
   <enmasse><![CDATA[

@@ -44,7 +44,8 @@
       component="HitLoc"
       showtemplate="baHitPick"
       showsortset="explicit"
-      scrollable="no">
+      scrollable="no"
+	  columns="2">
       </table_fixed>
     </portal>	
 	
@@ -60,7 +61,8 @@
       component="Derived"
       showtemplate="baTrtPick"
       showsortset="explicit"
-      scrollable="no">
+      scrollable="no"
+	   columns="2" >
       </table_fixed>
     </portal>
 
@@ -457,7 +459,6 @@
     id="basics">
     <portalref portal="baCharact" taborder="10"/>
     <portalref portal="baTrait" taborder="20"/>
-    <portalref portal="baHitLoc" taborder="30"/>
     <portalref portal="Horizontal"/>
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
@@ -468,8 +469,6 @@
       portal[baCharact].left = 0
       portal[baCharact].height = height
 
-
-
       ~set the separator width and position it beneath the Characts
       portal[Horizontal].width = portal[baCharact].width - 30
       portal[Horizontal].top = portal[baCharact].bottom + 15
@@ -477,21 +476,14 @@
 
       ~size and position the traits table beneath the separator; we set the height
       ~the the full layout height, but the table will only use the space it needs
-      portal[baTrait].width = (portal[baCharact].width / 2) - 5
+      portal[baTrait].width = (portal[baCharact].width) - 5
       portal[baTrait].left = portal[baCharact].left
       portal[baTrait].top = portal[Horizontal].bottom + 15
       portal[baTrait].height = height - portal[baTrait].top
-	  
-      ~size and position the skills table in the top right; we set the height to
-      ~the full layout height, but the table will only use the space it needs
-      portal[baHitLoc].width = portal[baTrait].width 
-      portal[baHitLoc].left = width - portal[baHitLoc].width
-      portal[baHitLoc].height = height - portal[baHitLoc].top
-	  portal[baHitLoc].top = portal[Horizontal].bottom + 15
 
       ~figure out the total height we need for the tab
-      height = maximum(portal[baTrait].bottom, portal[baHitLoc].bottom)
-      ~height = portal[baTrait].bottom
+      ~height = maximum(portal[baTrait].bottom, portal[baHitLoc].bottom)
+      height = portal[baTrait].bottom
       ]]></position>
 
     </layout>

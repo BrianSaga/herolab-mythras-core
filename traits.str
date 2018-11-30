@@ -59,8 +59,10 @@
         ~if we're in creation mode and not autonomous, we can't be modified
         if (hero.tagis[mode.creation] + !autonomous >= 2) then
           @text = "{bmp forbidden_up}"
-        else
-          @text = field[trtFinal].value
+        elseif (tagis[component.Charact] = 1) then
+          @text = field[trtFinal].value 
+		else
+		  @text = field[trtFinal].value & "%"
           endif
         ]]></finalize>
       </field>
@@ -194,6 +196,8 @@
       if (tagis[Helper.CustomItem] <> 0) then
         ~field[username].text = "Enter Name"
         endif
+	  doneif (isuser <> 0)
+	  perform hero.assign[Helper.CultSkills]
       ]]></creation>	
 
     <!-- Every skill is shown on the "Rolls" mouse-over on the Dashboard/TacCon -->
@@ -234,18 +238,17 @@
     </component>
 
 
-  <!-- Ability component
+  <!-- Passion component
         Each special ability derives from this component
   -->
   <component
-    id="Ability"
-    name="Ability"
-    autocompset="no"
-    panellink="abilities">
+    id="Passion"
+    name="Passion"
+    autocompset="no">
 
     <!-- Activation state of ability - we're not activated by default -->
     <field
-      id="abilActive"
+      id="pasActive"
       name="Is Activated?"
       type="user"
       minvalue="0"
@@ -253,25 +256,25 @@
       </field>
 
     <!-- Each ability needs its own identity tag to detect cascading dependencies via prereqs -->
-    <identity group="Ability"/>
+    <identity group="Passion"/>
 
     <!-- Setup an identity tag group to track all activated abilities and adjustments -->
     <identity group="Activated"/>
 
     <!-- All abilities get the same tag for sorting purposes -->
-    <tag group="SpecialTab" tag="Ability"/>
+    <tag group="SpecialTab" tag="Passion"/>
 
     <!-- Each ability that is added by the user costs 1 slot -->
     <eval index="1" phase="Setup" priority="5000"><![CDATA[
       ~we must ignore bootstrapped abilities from races and abilities added via advances
       if (isuser + origin.ishero >= 2) then
-        hero.child[resAbility].field[resSpent].value += 1
+        hero.child[resPassion].field[resSpent].value += 1
         endif
       ]]></eval>
 
     <!-- Track the ability on the actor -->
     <eval index="2" phase="Setup" priority="5000"><![CDATA[
-      perform forward[Ability.?]
+      perform forward[Passion.?]
       ]]></eval>
 
     <!-- If the ability is activated, designate it appropriately -->
@@ -282,7 +285,7 @@
       ~if we've been activated by the user, mark ourselves as activated; in addition,
       ~forward our identity tag to our parent actor; this allows the actor to track
       ~when abilities are activated and reflect the state to the user
-      if (field[abilActive].value <> 0) then
+      if (field[pasActive].value <> 0) then
         perform assign[Helper.Activated]
         perform forward[Activated.?]
         endif
@@ -562,11 +565,12 @@
     <compref component="CanAdvance"/>
     </compset>
 
-  <!-- Ability - all abilities derive from this compset -->
+  <!-- Passion - all abilities derive from this compset -->
   <compset
-    id="Ability">
-    <compref component="Ability"/>
+    id="Passion">
+    <compref component="Passion"/>
     <compref component="Trait"/>
+    <compref component="UserSelect"/>
     <compref component="SpecialTab"/>
     <compref component="CanAdvance"/>
     </compset>

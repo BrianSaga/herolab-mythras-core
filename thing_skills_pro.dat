@@ -79,7 +79,7 @@
     <tag group="SkillType" tag="Prof"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
@@ -183,7 +183,7 @@
     <!-- <tag group="SkillType" tag="Animism"/> -->
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -215,7 +215,7 @@
     <!-- <tag group="SkillType" tag="Animism"/> -->
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -248,11 +248,11 @@
 	
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -512,8 +512,8 @@
     <tag group="SkillType" tag="Prof"/>
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -577,7 +577,7 @@
     <tag group="Helper" tag="CustomItem"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -681,9 +681,9 @@
     <tag group="SkillType" tag="Prof"/>
  
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -787,9 +787,9 @@
     <!-- <tag group="SkillType" tag="Mysticism"/> -->
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
+    <tag group="SkillSrc" tag="cuCivil"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -852,8 +852,8 @@
     <!-- <tag group="User" tag="NeedDomain"/> -->
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -918,7 +918,7 @@
 
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -1042,7 +1042,7 @@
     <tag group="SkillType" tag="Prof"/>
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Civilised"/>
+    <tag group="SkillSrc" tag="cuCivil"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -1074,8 +1074,8 @@
     <tag group="SkillType" tag="Prof"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
@@ -1137,8 +1137,8 @@
     <tag group="SkillType" tag="Prof"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -1202,8 +1202,8 @@
     <tag group="Helper" tag="CustomItem"/> 
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-    <tag group="SkillSrc" tag="Primitive"/>	
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>

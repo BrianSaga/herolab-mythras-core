@@ -170,8 +170,8 @@ These data files provide a starting framework for implementing support for any g
       if (#resleft[resCP] <> 0) then
         @message &= bullet & "Character points must be assigned for the character.{br}"
         endif
-      if (#resleft[resAbility] <> 0) then
-        @message &= bullet & "Ability slots must be assigned for the character.{br}"
+      if (#resleft[resPassion] <> 0) then
+        @message &= bullet & "Passion slots must be assigned for the character.{br}"
         endif
       ]]></canadvance>
 

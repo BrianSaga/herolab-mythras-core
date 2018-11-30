@@ -70,13 +70,13 @@
     </editthing>
 
 
-  <!-- Ability editthing -->
+  <!-- Passion editthing -->
   <editthing
-    compset="Ability"
-    name="Abilities"
-    prefix="ab"
+    compset="Passion"
+    name="Passions"
+    prefix="pas"
     description="As basic traits, special abilities have various characteristics that are not currently used.{br}They also have an optional custom name for display on the Special tab."
-    summary="Defines a Special Ability upon which starting CPs can be spent by a character.">
+    summary="Defines a Special Passion upon which starting CPs can be spent by a character.">
     <inputthing
       name="Name for Special Tab"
       helptext="Specify an optional custom name to be used on the Special tab.">
@@ -85,7 +85,7 @@
     <inputthing
       name="Hide from User?"
       helptext="Specify whether this special ability is hidden from direct user selection (e.g. Flight is only conferred by the Avian race).">
-      <it_tagcheck group="Hide" tag="Ability"/>
+      <it_tagcheck group="Hide" tag="Passion"/>
       </inputthing>
     <inputthing
       name="Activated by User?"

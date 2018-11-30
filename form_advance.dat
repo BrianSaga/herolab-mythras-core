@@ -23,13 +23,13 @@
       <autotag group="Advance" tag="Gizmo"/>
       <chosen><![CDATA[
         if (@ispick = 0) then
-          @text = "{text clrwarning}Select New Trait/Ability"
+          @text = "{text clrwarning}Select New Trait/Passion"
         else
-          @text = "New Trait/Ability: " & field[thingname].text
+          @text = "New Trait/Passion: " & field[thingname].text
           endif
         ]]></chosen>
       <titlebar><![CDATA[
-        @text = "Choose the New Trait/Ability to Add"
+        @text = "Choose the New Trait/Passion to Add"
         ]]></titlebar>
       <description/>
       </chooser_table>
@@ -81,7 +81,7 @@
   <!-- advNew template -->
   <template
     id="advNew"
-    name="Add New Ability"
+    name="Add New Passion"
     compset="Advance">
 
     <portal
@@ -109,7 +109,7 @@
   <!-- advBoost template -->
   <template
     id="advBoost"
-    name="Boost Existing Ability"
+    name="Boost Existing Passion"
     compset="CanAdvance">
 
     <portal
@@ -187,7 +187,7 @@
   <!-- Static template -->
   <template
     id="advStatic"
-    name="Static (Non-Editable) Ability"
+    name="Static (Non-Editable) Passion"
     compset="AdvDetails">
 
     <portal

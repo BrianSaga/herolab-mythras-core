@@ -25,8 +25,8 @@
   <name name="Calc resLeft" full="Field resLeft: Calc resLeft"/>
   <name name="Calc trkLeft" full="Field trkLeft: Calc trkLeft"/>
   <name name="Calc trtFinal" full="Field trtFinal: Calc trtFinal"/>
-  <name name="Calc wpNetAtk" full="Component WeapMelee: Calc wpNetAtk"/>
   <name name="Calc wpNetAtk" full="Component WeapRange: Calc wpNetAtk"/>
+  <name name="Calc wpNetAtk" full="Component WeapMelee: Calc wpNetAtk"/>
   <name name="Check Hands" full="Thing valHands: Check Hands"/>
   <name name="Derived trtFinal" full="Component Derived: Derived trtFinal"/>
   <name name="Equip Armor" full="Component Armor: Equip Armor"/>
@@ -40,26 +40,26 @@
   <depends name="Thing resAdvance: Eval Script #1" phase="Setup" priority="2000">
     <after name="Thing resXP: Calc XP Max" phase="Setup" priority="1000"/>
     </depends>
-  <depends name="Thing adjAbility: Eval Script #1" phase="Setup" priority="8000">
-    <before name="Component WeapMelee: Calc wpNetAtk" phase="Final" priority="7000"/>
-    </depends>
   <depends name="Thing adjAttr: Eval Script #1" phase="Setup" priority="8000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     </depends>
   <depends name="Thing adjCP: Eval Script #1" phase="Setup" priority="8000">
-    <before name="Component WeapMelee: Calc wpNetAtk" phase="Final" priority="7000"/>
+    <before name="Component WeapRange: Calc wpNetAtk" phase="Final" priority="7000"/>
     </depends>
   <depends name="Thing adjDerived: Eval Script #1" phase="Setup" priority="8000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     </depends>
+  <depends name="Thing adjPassion: Eval Script #1" phase="Setup" priority="8000">
+    <before name="Component WeapRange: Calc wpNetAtk" phase="Final" priority="7000"/>
+    </depends>
   <depends name="Thing adjPower: Eval Script #1" phase="Setup" priority="8000">
-    <before name="Component WeapMelee: Calc wpNetAtk" phase="Final" priority="7000"/>
+    <before name="Component WeapRange: Calc wpNetAtk" phase="Final" priority="7000"/>
     </depends>
   <depends name="Thing adjSkill: Eval Script #1" phase="Setup" priority="8000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     </depends>
   <depends name="Thing adjWeapon: Eval Script #1" phase="Setup" priority="8000">
-    <before name="Component WeapMelee: Calc wpNetAtk" phase="Final" priority="7000"/>
+    <before name="Component WeapRange: Calc wpNetAtk" phase="Final" priority="7000"/>
     </depends>
   <depends name="Component Defense: Eval Script #2" phase="Pre-Traits" priority="5000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
@@ -180,7 +180,7 @@
   <depends name="Field hlHPSumm: Calculate (HP Summary)" phase="Render" priority="1000">
     <after name="Field hlHPNow: Calc hlHPNow" phase="Traits" priority="5100"/>
     </depends>
-  <depends name="Thing advAbility: Eval Script #1" phase="Render" priority="1000">
+  <depends name="Thing advPassion: Eval Script #1" phase="Render" priority="1000">
     <before name="Component Advance: Assign Dynamic Tagexpr" phase="Render" priority="2000"/>
     </depends>
   <depends name="Thing trDmgMod: Eval Script #2" phase="Render" priority="4000">
@@ -189,6 +189,10 @@
   </dependencies>
 <timing>
   <phase phase="Initialization (0)">
+    <priority priority="1000">
+      <task name="Component GizOption: Eval Script #1">
+        </task>
+      </priority>
     <priority priority="3000">
       <task name="Component Charact: Eval Script #1">
         </task>
@@ -212,11 +216,11 @@
     </phase>
   <phase phase="Setup (1)">
     <priority priority="100">
-      <task name="Component Ability: Eval Script #3">
-        </task>
       <task name="Component Adjustment: Eval Script #1">
         </task>
       <task name="Component AdvDetails: Eval Script #1">
+        </task>
+      <task name="Component Passion: Eval Script #3">
         </task>
       </priority>
     <priority priority="1000">
@@ -224,13 +228,11 @@
         </task>
       <task name="Component GizInfo: Eval Script #1">
         </task>
-      <task name="Component GizOption: Eval Script #1">
-        </task>
       <task name="Component Personal: Eval Script #1">
         </task>
-      <task name="Thing resAbility: Eval Script #1">
-        </task>
       <task name="Thing resCP: Eval Script #1">
+        </task>
+      <task name="Thing resPassion: Eval Script #1">
         </task>
       </priority>
     <priority priority="2000">
@@ -246,10 +248,6 @@
         </task>
       </priority>
     <priority priority="5000">
-      <task name="Component Ability: Eval Script #1">
-        </task>
-      <task name="Component Ability: Eval Script #2">
-        </task>
       <task name="Component Actor: Eval Script #4">
         </task>
       <task name="Component Advance: Eval Script #1">
@@ -257,6 +255,10 @@
       <task name="Component Career: Eval Script #1">
         </task>
       <task name="Component Culture: Eval Script #1">
+        </task>
+      <task name="Component Passion: Eval Script #1">
+        </task>
+      <task name="Component Passion: Eval Script #2">
         </task>
       <task name="Component Race: Eval Script #1">
         </task>
@@ -270,13 +272,13 @@
         </task>
       </priority>
     <priority priority="8000">
-      <task name="Thing adjAbility: Eval Script #1">
-        </task>
       <task name="Thing adjAttr: Eval Script #1">
         </task>
       <task name="Thing adjCP: Eval Script #1">
         </task>
       <task name="Thing adjDerived: Eval Script #1">
+        </task>
+      <task name="Thing adjPassion: Eval Script #1">
         </task>
       <task name="Thing adjPower: Eval Script #1">
         </task>
@@ -442,7 +444,7 @@
         </task>
       </priority>
     <priority priority="7000">
-      <task name="Component WeapMelee: Calc wpNetAtk">
+      <task name="Component WeapRange: Calc wpNetAtk">
         </task>
       </priority>
     <priority priority="10000">
@@ -460,15 +462,15 @@
     <priority priority="8000">
       <task name="Thing valHands: Check Hands">
         </task>
-      <task name="Thing valAbility: Eval Rule #1">
-        </task>
-      <task name="Thing valAbility: Eval Rule #2">
-        </task>
       <task name="Thing valArmor: Eval Rule #1">
         </task>
       <task name="Thing valCP: Eval Rule #1">
         </task>
       <task name="Thing valCP: Eval Rule #2">
+        </task>
+      <task name="Thing valPassion: Eval Rule #1">
+        </task>
+      <task name="Thing valPassion: Eval Rule #2">
         </task>
       <task name="Thing valRace: Eval Rule #1">
         </task>
@@ -516,7 +518,7 @@
         </task>
       <task name="Field trkUser: Bound (User Value)">
         </task>
-      <task name="Thing advAbility: Eval Script #1">
+      <task name="Thing advPassion: Eval Script #1">
         </task>
       </priority>
     <priority priority="2000">

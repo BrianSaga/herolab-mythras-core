@@ -58,12 +58,12 @@
     </thing>
 
 
-  <!-- Ability slot resource to track the pool of ability slots being spent -->
+  <!-- Passion slot resource to track the pool of ability slots being spent -->
   <thing
-    id="resAbility"
-    name="Ability Slots"
+    id="resPassion"
+    name="Passion Slots"
     compset="Resource">
-    <fieldval field="resObject" value="Ability"/>
+    <fieldval field="resObject" value="Passion"/>
 
     <!-- Automatically add the resource to every actor -->
     <tag group="Helper" tag="Bootstrap"/>

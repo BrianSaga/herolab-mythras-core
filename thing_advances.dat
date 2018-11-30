@@ -16,22 +16,22 @@
     </thing>
 
 
-  <!-- New Ability advance
+  <!-- New Passion advance
   -->
   <thing
-    id="advAbility"
-    name="Gain a New Ability"
+    id="advPassion"
+    name="Gain a New Passion"
     compset="Advance"
     description="Select a new ability of your choice.">
-    <fieldval field="advAction" value="New Ability"/>
-    <fieldval field="advDynamic" value="component.Ability"/>
+    <fieldval field="advAction" value="New Passion"/>
+    <fieldval field="advDynamic" value="component.Passion"/>
     <tag group="Advance" tag="AddNew"/>
     <!-- Modify tagexpr to deny abilities that have already been added to the character -->
     <eval index="1" phase="Render" priority="1000">
       <before name="Assign Dynamic Tagexpr"/><![CDATA[
       ~get the list of all abilities on the hero and assemble it as a list of precluded tags
       var tagexpr as string
-      tagexpr = hero.tagids[Ability.?," & !"]
+      tagexpr = hero.tagids[Passion.?," & !"]
       ~if there are any tags to exclude, append them to the tagexpr appropriately
       field[advDynamic].text = splice(field[advDynamic].text,tagexpr," & !")
       ]]></eval>

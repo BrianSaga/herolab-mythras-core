@@ -460,18 +460,29 @@
     autocompset="yes"
     hasshortname="yes"
 	ispublic="yes">
-	  
+	
+	<linkage linkage="AssocPick" optional="yes"/> 
 	<identity group="GizOption"/>
  
     <!-- Assign the tag to the container -->
-    <eval index="1" phase="Setup" priority="1000"><![CDATA[
+    <eval index="1" phase="Initialize" priority="1000"><![CDATA[
       perform forward[GizOption.?,parent]
+	  
+	  ~Let the linkage pick know to show itself
+	  doneif (islinkage[AssocPick] = 0)
+	 
+	  if (tagis[portal.CultureOpt] <> 0) then
+		perform linkage[AssocPick].assign[AddedBy.Culture]
+	  elseif (tagis[portal.CareerOpt] <> 0) then
+	    perform linkage[AssocPick].assign[AddedBy.Career]
+	  endif
       ]]></eval>	
 	  
     <!-- Each Bonus must be costed to account for the HP multiplier -->
     <eval index="2" phase="Traits" priority="1500">
       <before name="Calc resLeft"/>
       <after name="Bound trtUser"/><![CDATA[
+
       ]]></eval>	  
     </component>
 	
@@ -496,7 +507,7 @@
     <compref component="Transact"/>
     </compset>
 
-  <!-- Entity for cukture
+  <!-- Entity for GizOption
    <entity
 	  id="entCulture"
 	  defaultthing="CultureInf"

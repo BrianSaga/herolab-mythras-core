@@ -12,11 +12,11 @@
 
 <document signature="Hero Lab Data">
 
-  <!-- Sample Ability -->
+  <!-- Sample Passion -->
   <thing
-    id="abSample"
-    name="Sample"
-    compset="Ability"
+    id="abLoyClan"
+    name="Loyalty to Clan Chieftain"
+    compset="Passion"
     isunique="yes"
     description="Description goes here">
 
@@ -48,7 +48,7 @@
     -->
 
     <!-- If the ability should not appear for normal selection, assign this tag
-    <tag group="Hide" tag="Ability"/>
+    <tag group="Hide" tag="Passion"/>
     -->
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag
@@ -59,7 +59,67 @@
     <eval value="1" phase="PreTraits" priority="5000">
       <before name="Calc trtFinal"/><![CDATA[
       ~if we haven't been activated, just get out (only needed for user-activated abilities)
-      doneif (field[abilActive].value = 0)
+      doneif (field[pasActive].value = 0)
+
+      ~apply whatever adjustment(s) are needed here
+      ~#traitbonus[trDmgMod] += 1
+      ]]></eval>
+    -->
+
+    <!-- Define any appropriate pre-requisites for the ability
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
+    -->
+
+    </thing> 
+
+	<!-- Love Passion -->
+  <thing
+    id="abLove"
+    name="Love"
+    compset="Passion"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If checkbox selection is needed, make sure the compset includes "UserSelect"
+          component and define this field appropriately.
+    <fieldval field="usrChkText" value="Menu1"/>
+    -->
+
+    <!-- If thing-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields and tags as appropriate.
+    <fieldval field="usrLabel1" value="Menu1"/>
+    <fieldval field="usrCandid1" value="component.Charact"/>
+    <fieldval field="usrLabel2" value="Menu2"/>
+    <fieldval field="usrCandid2" value="component.Skill"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    -->
+
+    <!-- If array-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields as appropriate. -->
+    <fieldval field="usrLabelAr" value="Focus"/>
+    <arrayval field="usrArray" index="0" value="friend"/>
+    <arrayval field="usrArray" index="1" value="sibling"/>
+    <arrayval field="usrArray" index="2" value="romantic lover"/>
+   
+
+    <!-- If the ability can only be selected at character creation, assign this tag
+    <tag group="User" tag="CreateOnly"/>
+    -->
+
+    <!-- If the ability should not appear for normal selection, assign this tag
+    <tag group="Hide" tag="Passion"/>
+    -->
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag
+    <tag group="User" tag="Activation"/>
+    -->
+
+    <!-- Define any script needed to apply changes to other traits
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out (only needed for user-activated abilities)
+      doneif (field[pasActive].value = 0)
 
       ~apply whatever adjustment(s) are needed here
       ~#traitbonus[trDmgMod] += 1

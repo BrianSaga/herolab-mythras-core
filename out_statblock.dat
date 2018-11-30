@@ -189,7 +189,7 @@
 
         ~output special abilities
         append @boldon & "Special Abilities: " & @boldoff
-        tagexpr = "component.Ability"
+        tagexpr = "component.Passion"
         call sbtraits
 
         ~output derived traits
