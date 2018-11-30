@@ -353,7 +353,7 @@
         ~output special abilities
         parentnode = xmlroot.addchild["abilities"]
         nodename = "ability"
-        tagexpr = "component.Ability"
+        tagexpr = "component.Passion"
         call xotraits
 
         ~output derived traits

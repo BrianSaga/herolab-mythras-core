@@ -10,7 +10,7 @@
 <document signature="Hero Lab Data">
 
 
-  <!-- abAbility portal
+  <!-- abPassion portal
         Presents a dynamic table where the user can add special abilities for the
         character.
 
@@ -25,11 +25,11 @@
         script, which is the resource for tracking abilities.
 
         We use a "candidate" tag expression to limit the choices the user can make.
-        If omitted, all things derived from the "Ability" component will be shown
+        If omitted, all things derived from the "Passion" component will be shown
         to the user for selection. Using this tagexpr allows us to omit all abilities
-        that have the "Hide.Ability" tag. For example, the Flight ability needs to
+        that have the "Hide.Passion" tag. For example, the Flight ability needs to
         behave as a normal ability, but we only want it available to characters that
-        select the "Avian" race. By assigning it the "Hide.Ability" tag and using
+        select the "Avian" race. By assigning it the "Hide.Passion" tag and using
         the candidate tagexpr to omit those abilities, Flight cannot be chosen by
         non-Avian characters but it will also appear in the selected list if the
         character choosed the Avian race.
@@ -46,27 +46,61 @@
         The title includes an indication of how many selections have been chosen
         and how many remain, with appropriate color highlighting to prompt the user.
   -->
+
+
   <portal
-    id="skSkillPro"
+    id="skSkillClt"
     style="tblNormal">
-    <table_dynamic
+    <table_fixed 
       component="Skill"
       showtemplate="proSklPick"
-      choosetemplate="SimpleItem"
-	  headertemplate="proSklPick"
 	  showsortset="SkillType"
+	  alwaysupdate="yes">
+      <list>AddedBy.Culture</list>
+     <headertitle>
+      @text = "Cultural Skills"
+      </headertitle>
+      </table_fixed>
+    </portal>
+
+
+  <portal
+    id="skPassClt"
+    style="tblNormal">
+    <table_fixed 
+      component="Passion"
+      showtemplate="proSklPick"
+	  alwaysupdate="yes">
+      <list>AddedBy.Culture</list>
+     <headertitle>
+      @text = "Cultural Passions"
+      </headertitle>
+      </table_fixed>
+    </portal>
+
+  <portal
+    id="CultureOpt"
+    style="tblNormal">
+    <table_dynamic
+      component="GizOption"
+      showtemplate="SimpleItem"
+      choosetemplate="SimpleItem"
       showfixedlast="yes"
-      addpick="resAbility">
-      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !SkillInfo.Option</list>
-      <candidate>!Hide.Ability</candidate>
+      columns="2"
+      addpick="resPassion">
+      <list>OptionOn.?</list>
+	  <candidate></candidate>
 	  <needtag
-		container="SkillSrc"
-		thing="SkillSrc"
-		usehero="yes" />
+		container="Culture"
+		thing="OptionOn"
+		usehero="yes" /> 
       <titlebar><![CDATA[
-        @text = "Add a Professional Skill - " & hero.child[resAbility].field[resSummary].text
+        @text = "Add a selection for " & hero.tagnames[Culture.?] & " culture"
         ]]></titlebar>
       <description/>
+      <headertitle><![CDATA[
+        @text = "Options for " & hero.tagnames[Culture.?] & " culture"
+        ]]></headertitle>	  
       <additem><![CDATA[
         ~if we're in advancement mode, we've been frozen, so display accordingly
         if (state.iscreate = 0) then
@@ -80,9 +114,30 @@
         elseif (field[resLeft].value < 0) then
           @text = "{text clrwarning}"
           endif
-        @text &= "Add New Professional Skill"
+        @text &= "Add New Option for " & hero.tagnames[Culture.?] & " culture"
         ]]></additem>
       </table_dynamic>
+    </portal>
+
+  <portal
+    id="stCulture"
+    style="chsLarge"
+    width="130">
+    <chooser_table
+      component="Culture"
+      choosetemplate="LargeItem">
+      <chosen><![CDATA[
+        if (@ispick = 0) then
+          @text = "{text clrwarning}Select Culture"
+        else
+          @text = "Culture: " & field[name].text
+          endif
+        ]]></chosen>
+      <titlebar><![CDATA[
+        @text = "Choose the culture for your character"
+        ]]></titlebar>
+		<description />
+      </chooser_table>
     </portal>
 	
    <!-- baSklPick template
@@ -171,7 +226,7 @@
         <labeltext><![CDATA[
           var bonus as number
           bonus = field[trtBonus].value + field[trtInPlay].value
-          @text = bonus
+          @text = bonus & "%"
           ]]></labeltext>
         </label>
       </portal>
@@ -193,34 +248,7 @@
         </action>
       </portal>
 
-    <!-- Portals used as the header -->
 
-    <portal
-      id="hdrtotal"
-      style="lblNormal"
-      isheader="yes">
-      <label
-        text="Total">
-        </label>
-      </portal>
-
-    <portal
-      id="hdrbase"
-      style="lblNormal"
-      isheader="yes">
-      <label
-        text="Base">
-        </label>
-      </portal>
-
-    <portal
-      id="hdrbonus"
-      style="lblNormal"
-      isheader="yes">
-      <label
-        text="Bonus">
-        </label>
-      </portal>
 	  
     <portal
       id="value"
@@ -250,9 +278,9 @@
 			var mouseinfo as string
 			Call MouseInfo
 			if (isgizmo <> 0) then
-				foreach pick in gizmo where "SkillInfo.Option"
-					if (eachpick.field[sklChosen].ischosen <> 0) then
-						mouseinfo &= "{br}{br}" & eachpick.field[sklChosen].chosen.field[UserName].text
+				foreach pick in gizmo where "GizInfo.Option"
+					if (eachpick.field[gizChosen].ischosen <> 0) then
+						mouseinfo &= "{br}{br}" & eachpick.field[gizChosen].chosen.field[UserName].text
 					endif
 				nexteach
 			endif
@@ -311,7 +339,7 @@
         perform portal[name].setstyle[lblAuto]
         endif
 		
-		if (ispick + tagcount[SkillInfo.?] >= 2) then
+		if (ispick + tagcount[GizInfo.?] >= 2) then
 			portal[domain].visible = 1
 		endif
 	  
@@ -330,26 +358,6 @@
         endif
       ]]></position>
 
-    <header><![CDATA[
-      ~our header height is the title plus a gap plus the header text
-      height = 10 + portal[hdrtotal].height
-      doneif (issizing <> 0)
-
-      ~each of our header labels has the same width as the corresponding data beneath
-      portal[hdrtotal].width = portal[total].width
-      portal[hdrbase].width = portal[base].width
-      portal[hdrbonus].width = portal[bonus].width
-
-      ~center each header label on the corresponding data beneath
-      perform portal[hdrtotal].centerpoint[horz,200]
-      perform portal[hdrbase].centerpoint[horz,265]
-      perform portal[hdrbonus].centerpoint[horz,325]
-
-      ~align all header labels at the bottom of the header region
-      perform portal[hdrtotal].alignedge[bottom,0]
-      perform portal[hdrbase].alignedge[bottom,0]
-      perform portal[hdrbonus].alignedge[bottom,0]
-      ]]></header>
 
     </template>
 
@@ -363,20 +371,32 @@
         logic for the Basics tab. So please refer to the Basics tab for more details.
   -->
   <layout
-    id="skillprof">
-    <portalref portal="skSkillPro" taborder="10"/>
+    id="skillclt">
+    <portalref portal="stCulture" taborder="10"/>
+    <portalref portal="CultureOpt" taborder="20"/>
+    <portalref portal="skSkillClt" taborder="30"/>
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
     <position><![CDATA[
       ~freeze our table in advancement mode to disable adding new choices
       ~Note: All freezing must be done *before* any positioning is performed.
       if (state.iscreate = 0) then
-        portal[skSkillPro].freeze = 1
+        portal[skSkillClt].freeze = 1
         endif
 
       ~position and size the table to span the full layout; it will only use the
       ~vertical space that it actually needs
-      perform portal[skSkillPro].autoplace
+	  var cult as number
+	  cult = hero.tagis[Culture.?]
+	  portal[skSkillClt].visible = cult
+	  portal[CultureOpt].visible = cult
+	  
+      portal[stCulture].top = 2
+      portal[stCulture].width = width - 10
+      portal[CultureOpt].top = portal[stCulture].bottom + 5
+      portal[CultureOpt].width = width - 10
+      portal[skSkillClt].top = portal[CultureOpt].bottom + 5
+      portal[skSkillClt].width = width - 10
       ]]></position>
 
     </layout>
@@ -391,18 +411,18 @@
         please refer to the Basics panel for more details.
   -->
   <panel
-    id="skillprof"
-    name="Skills (Professional)"
+    id="skillclt"
+    name="Culture"
     marginhorz="5"
     marginvert="5"
-    order="130">
-    <live>!HideTab.skillprof</live>
-    <layoutref layout="skillprof"/>
+    order="125">
+    <live>!HideTab.culture</live>
+    <layoutref layout="skillclt"/>
     <position><![CDATA[
       ~get the height used by the layout and use it, as that means we scroll
       ~if necessary
-      perform layout[skillprof].render
-      height = layout[skillprof].height
+      perform layout[skillclt].render
+      height = layout[skillclt].height
       ]]></position>
     </panel>
   </document>

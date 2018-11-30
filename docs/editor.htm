@@ -114,7 +114,7 @@ which is can be referenced.<p class="subsection">Trackers<p class="body">Tracker
 <p class="body">Timing: <font class="strong">Traits</font> and <font class="strong">Final</font> phase. All fields other than &quot;trkLeft&quot; must be modified prior to the Traits phase. The value of &quot;trkLeft&quot; is calculated at a priority of Final/1000, after
 which is can be referenced.<p class="subsection">Abilities<p class="body">Abilities possess a few fields that are of importance when writing scripts.<ul class="bullet">
 
-<li class="bullet"><span class="style1">abilActive</span> - Indicates whether the effects of the ability have been activated or not by the user. If non-zero, the effects are active and should be applied.</ul>
+<li class="bullet"><span class="style1">pasActive</span> - Indicates whether the effects of the ability have been activated or not by the user. If non-zero, the effects are active and should be applied.</ul>
 <p class="body">Timing: These fields are established by user behaviors and must be treated as read-only throughout the evaluation cycle.
 
 
@@ -166,7 +166,7 @@ Worlds data files define a number of macros that can be used as &quot;shorthand&
   <p class="body">Accesses the &quot;trtInPlay&quot; field of the trait with the specified unique id given by &quot;trait_id&quot;. For example, to access the &quot;trtInPlay&quot; field on the
 &quot;Strength&quot; Charact, the syntax would be &quot;#traitinplay[attrStr]&quot;.<p class="body">Equivalent to: hero.child[<i>trait_id</i>].field[trtInPlay].value<li class="bullet"><font class="strong">#resmax[<i>res_id</i>]</font>
 
-<p class="body">Accesses the &quot;resMax&quot; field of the resource specified by <i>res_id</i>. For example, to get the number of ability slots the character possesses, the syntax would be &quot;#resmax[resAbility]&quot;.
+<p class="body">Accesses the &quot;resMax&quot; field of the resource specified by <i>res_id</i>. For example, to get the number of ability slots the character possesses, the syntax would be &quot;#resmax[resPassion]&quot;.
 <p class="body">Equivalent to: hero.child[<i>res_id</i>].field[resMax].value<li class="bullet"><font class="strong">#trkmax[<i>trk_id</i>]</font>
 
   <p class="body">Accesses the &quot;trkMax&quot; field of the tracker specified by

@@ -11,14 +11,14 @@
 <document signature="Hero Lab Data">
 
 
-  <!-- smAbility portal - table of special abilities
+  <!-- smPassion portal - table of special abilities
   -->
   <portal
-    id="smAbility"
+    id="smPassion"
     style="tblInvisSm">
     <table_fixed
-      component="Ability"
-      showtemplate="smAbility"
+      component="Passion"
+      showtemplate="smPassion"
       scrollable="no">
       <headertitle><![CDATA[
       @text = #summtitle_decoration[] & " Abilities " & #summtitle_decoration[]
@@ -44,14 +44,14 @@
     </portal>
 
 
-  <!-- smAbility template
+  <!-- smPassion template
         This template shows the names of each special ability ability, providing
-        mouse-over behavior to show the details of each ability.
+        mouse-over behavior to show the details of each Passion.
   -->
   <template
-    id="smAbility"
-    name="Summary Ability Pick"
-    compset="Ability">
+    id="smPassion"
+    name="Summary Passion Pick"
+    compset="Passion">
 
     <portal
       id="name"
@@ -76,25 +76,25 @@
     </template>
 
 
-  <!-- smAbility layout
+  <!-- smPassion layout
         This layout contains both the table of special abilities and the table of
         skills for the actor.
   -->
   <layout
-    id="smAbility">
-    <portalref portal="smAbility"/>
+    id="smPassion">
+    <portalref portal="smPassion"/>
     <portalref portal="smSkill"/>
 
     <position><![CDATA[
       ~position and size the tables to span the full layout
-      perform portal[smAbility].autoplace
+      perform portal[smPassion].autoplace
       perform portal[smSkill].autoplace[20]
       ]]></position>
 
     </layout>
 
 
-  <!-- smAbility panel
+  <!-- smPassion panel
         This panel is designated as a summary panel and given an order that positions
         it properly amongst the other defined summary panels. We setup a small margin
         to indent the layout from the edges of the panel.
@@ -106,14 +106,14 @@
         ghosts vs. mortals in the World of Darkness game system.
   -->
   <panel
-    id="smAbility"
+    id="smPassion"
     name="Abilities"
     order="10020"
     marginhorz="2"
     marginvert="2"
     issummary="yes">
-    <live>!HideTab.smAbility</live>
-    <layoutref layout="smAbility"/>
+    <live>!HideTab.smPassion</live>
+    <layoutref layout="smPassion"/>
 
     <position><![CDATA[
       ]]></position>

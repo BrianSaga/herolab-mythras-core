@@ -175,7 +175,7 @@
     <!-- Starting ability slots to allocate -->
     <field
       id="acStartAbi"
-      name="Ability Slots"
+      name="Passion Slots"
       type="user"
       defvalue="2">
       </field>

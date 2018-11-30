@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the assortment of special abilities for the game system.
+      Abilities confer their effects through scripts that apply the necessary changes
+      to the appropriate traits.
+
+      Abilities influence traits, so all adjustments must be applied prior to when the
+      final trait value is calculated. The script timing used below (PreTraits/5000)
+      ensures that we satisfy this requirement. All abilities should be designated as
+      "unique" so that they can only be selected a single time by the user.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Sample Passion -->
+  <thing
+    id="optAthlet"
+    name="Athletics"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If checkbox selection is needed, make sure the compset includes "UserSelect"
+          component and define this field appropriately.
+    <fieldval field="usrChkText" value="Menu1"/>
+    -->
+
+    <!-- If thing-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields and tags as appropriate.
+    <fieldval field="usrLabel1" value="Menu1"/>
+    <fieldval field="usrCandid1" value="component.Charact"/>
+    <fieldval field="usrLabel2" value="Menu2"/>
+    <fieldval field="usrCandid2" value="component.Skill"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    -->
+
+    <!-- If array-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields as appropriate.
+    <fieldval field="usrLabelAr" value="Menu1"/>
+    <arrayval field="usrArray" index="0" value="Choice #1"/>
+    <arrayval field="usrArray" index="1" value="Choice #2"/>
+    <arrayval field="usrArray" index="2" value="Choice #3"/>
+    -->
+
+    <!-- If the ability can only be selected at character creation, assign this tag
+    <tag group="User" tag="CreateOnly"/>
+    -->
+
+    <!-- If the ability should not appear for normal selection, assign this tag
+    <tag group="Hide" tag="Passion"/>
+    -->
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <link linkage="AssocPick" thing="skAthletic"/>
+    <!-- Define any script needed to apply changes to other traits
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out (only needed for user-activated abilities)
+      doneif (field[pasActive].value = 0)
+
+      ~apply whatever adjustment(s) are needed here
+      ~#traitbonus[trDmgMod] += 1
+      ]]></eval>
+    -->
+
+    <!-- Define any appropriate pre-requisites for the ability
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
+    -->
+
+    </thing>
+	
+  <!-- Sample Passion -->
+  <thing
+    id="optDrive"
+    name="Drive"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <link linkage="AssocPick" thing="skDrive"/>
+    </thing>
+	
+  <!-- Sample Passion -->
+  <thing
+    id="optRide"
+    name="Ride"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <link linkage="AssocPick" thing="skRide"/>
+	
+    </thing>
+	
+  <!-- Sample Passion -->
+  <thing
+    id="optBoating"
+    name="Boating"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <link linkage="AssocPick" thing="skBoating"/>	
+    </thing>
+
+	<!-- Sample Passion -->
+  <thing
+    id="optSwim"
+    name="Swim"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <link linkage="AssocPick" thing="skSwim"/>		
+    </thing>
+
+	<!-- Sample Passion -->
+  <thing
+    id="optCombat"
+    name="Combat Style"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/>
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skCombatSt">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optCraft"
+    name="Craft"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/>
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skCraft">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optHealing"
+    name="Healing"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <!-- <tag group="OptionOn" tag="cuNomadic"/> -->
+    <tag group="OptionOn" tag="cuPrim"/>
+    <!-- <tag group="OptionOn" tag="cuCivil"/> -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skHealing">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optLore"
+    name="Lore"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/>
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skLore">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optMusic"
+    name="Musicianship"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/>
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skMusician">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optNavigat"
+    name="Navigate"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <!-- <tag group="OptionOn" tag="cuCivil"/> -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skNavig">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optSeaman"
+    name="Seamanship"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <!-- <tag group="OptionOn" tag="cuNomadic"/> -->
+    <!-- <tag group="OptionOn" tag="cuPrim"/> -->
+    <!-- <tag group="OptionOn" tag="cuCivil"/> -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skSeaman">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	
+	<!-- Sample Passion -->
+  <thing
+    id="optSurviv"
+    name="Survival"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+   <tag group="OptionOn" tag="cuPrim"/>
+    <!-- <tag group="OptionOn" tag="cuCivil"/> -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skSurvive">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	
+	<!-- Track Option -->
+  <thing
+    id="optTrack"
+    name="Track"
+    compset="GizOption"
+    isunique="no"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+    <tag group="OptionOn" tag="cuNomadic"/>
+    <tag group="OptionOn" tag="cuPrim"/>
+    <!-- <tag group="OptionOn" tag="cuCivil"/> -->
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="skTrack">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+
+  </document>

@@ -47,12 +47,18 @@
     <tag group="User" tag="CreateOnly"/>
 	
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Primitive"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
 
     <!-- Define any appropriate pre-requisites for the ability
     <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
     -->
-
+		<child
+			entity="entConfig">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(CultureOpt.cuPrim)"/>
+			</bootstrap>
+		</child>
     </thing>
 
   <!-- Barbarian Culture -->
@@ -66,7 +72,54 @@
     <!-- If the ability can only be selected at character creation, assign this tag  -->
     <tag group="User" tag="CreateOnly"/>
 	<!-- USed for match expressions  -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+ 
+
+    <!-- Define any appropriate pre-requisites for the ability
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
+    -->
+
+    </thing>
+	
+  <!-- Nomadic Culture -->
+  <thing
+    id="cuNomadic"
+    name="Nomadic"
+    compset="Culture"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	<!-- USed for match expressions  -->
+    <tag group="SkillSrc" tag="cuNomadic"/>
+ 
+
+    <!-- Define any appropriate pre-requisites for the ability
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
+    -->
+	  
+		<child
+			entity="entConfig">
+			<tag group="Helper" tag="Gizmo"/>
+			<bootstrap thing="GizInfo">
+				<assignval field="TagExOnThg" value="(CultureOpt.cuNomadic)"/>
+			</bootstrap>
+		</child>
+    </thing>
+	
+  <!-- Civilised Culture -->
+  <thing
+    id="cuCivil"
+    name="Civilised"
+    compset="Culture"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	<!-- USed for match expressions  -->
+    <tag group="SkillSrc" tag="cuCivil"/>
  
 
     <!-- Define any appropriate pre-requisites for the ability

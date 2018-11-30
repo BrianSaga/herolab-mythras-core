@@ -2737,6 +2737,17 @@
       backcolorid="clrmenubck">
       </style_chooser>
     </style>
+	
+  <!-- standard chooser portal -->
+  <style
+    id="chsLarge"
+    border="sunken">
+    <style_chooser
+      font="fntxlarge"
+      textcolorid="clrmenutxt"
+      backcolorid="clrmenubck">
+      </style_chooser>
+    </style>
 
   <!-- standard chooser portal with coloring to indicate contents are in error -->
   <style

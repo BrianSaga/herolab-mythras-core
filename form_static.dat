@@ -47,25 +47,7 @@
       </chooser_table>
     </portal>
 
-  <portal
-    id="stCulture"
-    style="chsNormal"
-    width="130">
-    <chooser_table
-      component="Culture"
-      choosetemplate="LargeItem">
-      <chosen><![CDATA[
-        if (@ispick = 0) then
-          @text = "{text clrwarning}Select Culture"
-        else
-          @text = "Culture: " & field[name].text
-          endif
-        ]]></chosen>
-      <titlebar><![CDATA[
-        @text = "Choose the culture for your character"
-        ]]></titlebar>
-      </chooser_table>
-    </portal>
+
 
 
   <!-- stName template
@@ -199,7 +181,6 @@
   <layout
     id="static">
     <portalref portal="stRace" taborder="20"/>
-    <portalref portal="stCulture" taborder="30"/>
     <templateref template="stName" thing="heroname" taborder="10"/>
     <templateref template="stActor" thing="actor"/>
 
@@ -213,8 +194,7 @@
       ~position the race portal to the right of the name, with the actor template
       ~a little to the right of the race
       portal[stRace].left = template[stName].right + 20
-      portal[stCulture].left = portal[stRace].right + 20
-      template[stActor].left = portal[stCulture].right + 15
+      template[stActor].left = portal[stRace].right + 20
 
       ~limit the width of the actor template to the remaining space available and
       ~then render the template

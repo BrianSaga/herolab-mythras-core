@@ -54,7 +54,7 @@
 	name="Intelligence"
 	compset="Charact"
 	isunique="yes"
-	description="INT is measurement of cognitive ability. It indicates the capacity for a character to think both logically and creatively. Those with a lower INT score are not necessarily stupid, but they are likely to be constrained in how creatively they can employ their wits. Creatures with an INT of 7 or below are considered sentient, retaining animal level instinct, and able to react to stimuli. Individuals with an INT of 8 or higher are deemed fully sapient. INT is a factor in calculating Action Points (see page 8), and Initiative Bonus (see page 10). If INT is reduced to zero the character becomes completely mindless.">
+	description="INT is measurement of cognitive Passion. It indicates the capacity for a character to think both logically and creatively. Those with a lower INT score are not necessarily stupid, but they are likely to be constrained in how creatively they can employ their wits. Creatures with an INT of 7 or below are considered sentient, retaining animal level instinct, and able to react to stimuli. Individuals with an INT of 8 or higher are deemed fully sapient. INT is a factor in calculating Action Points (see page 8), and Initiative Bonus (see page 10). If INT is reduced to zero the character becomes completely mindless.">
 		<fieldval field="trtAbbrev" value="INT"/>
 		<tag group="explicit" tag="5"/>
 	</thing>

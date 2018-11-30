@@ -25,8 +25,8 @@
     id="Helper">
     <value id="Bootstrap"/>   <!-- Identifies a pick that must be bootstrapped for every hero -->
     <value id="Displace"/>    <!-- Pick should be displaced if it is designated for displacement -->
-    <value id="Maximum"/>     <!-- Ability has reached its maximum level and cannot be improved -->
-    <value id="Minimum"/>     <!-- Ability has reached its minimum level and cannot be decreased -->
+    <value id="Maximum"/>     <!-- Passion has reached its maximum level and cannot be improved -->
+    <value id="Minimum"/>     <!-- Passion has reached its minimum level and cannot be decreased -->
     <value id="NoDelete"/>    <!-- Indicates the pick cannot be deleted because another selection precludes it -->
     <value id="Activated"/>   <!-- Indicates an in-play adjustment or ability that has been activated -->
     <value id="NoMove"/>      <!-- Identifies gear that cannot be transferred between actors -->
@@ -39,7 +39,9 @@
     <value id="NoMinimum"/>   <!-- Resource does NOT need to be fully spent to avoid reporting a warning -->
     <value id="CustomItem"/>  <!-- Identifies a thing that has a user customizable name -->
     <value id="NoPersText"/>  <!-- User entered no background text -->
-    <value id="Gizmo"/>    <!-- User entered no background text -->
+    <value id="Gizmo"/>       <!-- Pick added via Gizmo -->
+    <value id="Enmasse"/>     <!-- Pick added via enmasse -->
+    <value id="CultSkills"/>  <!-- For existence tag -->
     </group>
 
   <!-- User group - general helper tags that can be assigned by users via the Editor
@@ -149,13 +151,15 @@
     <value id="personal"/>
     <value id="combat"/>
     <value id="hitloc"/>
+    <value id="career"/>
+    <value id="culture"/>
     <value id="skillstand"/>
     <value id="skillprof"/>
     <value id="journal"/>
     <value id="inplay"/>
     <value id="special"/>
     <value id="smBasics"/>
-    <value id="smAbility"/>
+    <value id="smPassion"/>
     <value id="smArmory"/>
     <value id="smStatbl"/>
     </group>
@@ -174,7 +178,7 @@
     <value id="SkillStand"/>       <!-- Indicates a skill that is not user selectable -->
     <value id="SkillProf"/>       <!-- Indicates a skill that is not user selectable -->
     <value id="InPlay"/>          <!-- Indicates an in-play adjustment that is hidden from view -->
-    <value id="Ability"/>         <!-- Indicates an ability that is not user selectable (i.e. conferred by race or similar mechanism) -->
+    <value id="Passion"/>         <!-- Indicates an ability that is not user selectable (i.e. conferred by race or similar mechanism) -->
     <value id="Special"/>         <!-- Indicates a trait that is hidden from the Special tab -->
     <value id="Tracker"/>         <!-- Indicates a tracker that is hidden from the In-Play tab (and likely shown somewhere else) -->
     </group>
@@ -313,7 +317,7 @@
   <group
     id="SpecialTab"
     sequence="explicit">
-    <value id="Ability" order="10"/>
+    <value id="Passion" order="10"/>
     <value id="Unknown" order="80"/>
     </group>
 	
@@ -372,7 +376,7 @@
     </group>
 
 	<group
-    id="SkillInfo"
+    id="GizInfo"
     sequence="explicit">
 		<value id="Option"/>
     </group>
@@ -380,8 +384,27 @@
 	<group
     id="SkillSrc"
     sequence="explicit">
-		<value id="Barbarian"/>
-		<value id="Primitive"/>
+		<value id="cuBarbar" name="Barbarian"/>
+		<value id="cuPrim" name="Primitive"/>
+		<value id="cuNomadic" name="Nomadic"/>
+		<value id="cuCivil" name="Civilised"/>
+    </group>
+
+	<group
+    id="OptionOn"
+    sequence="explicit">
+		<value id="cuBarbar" name="Barbarian"/>
+		<value id="cuPrim" name="Primitive"/>
+		<value id="cuNomadic" name="Nomadic"/>
+		<value id="cuCivil" name="Civilised"/>
+    </group>
+
+	<group
+    id="AddedBy"
+    sequence="explicit">
+		<value id="Culture"/>
+		<value id="Career"/>
+		<value id="Bonus"/>
     </group>
 	
   </document>

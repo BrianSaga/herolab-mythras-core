@@ -43,7 +43,7 @@
     id="ipActivate"
     style="tblNormal">
     <table_fixed
-      component="Ability"
+      component="Passion"
       showtemplate="ipActivate"
       columns="2">
       <list>User.Activation</list>
@@ -212,16 +212,16 @@
   <template
     id="ipActivate"
     name="Activated Abilities"
-    compset="Ability"
+    compset="Passion"
     marginhorz="3"
     marginvert="3">
 
     <portal
       id="activate"
       style="chkNormal"
-      tiptext="Click to activate or deactivate this ability.">
+      tiptext="Click to activate or deactivate this Passion.">
       <checkbox
-        field="abilActive"
+        field="pasActive"
         dynamicfield="name">
         </checkbox>
       </portal>

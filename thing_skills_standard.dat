@@ -22,7 +22,7 @@
     <tag group="SkillType" tag="Standard"/>
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -54,7 +54,8 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="OptionOn" tag="cuBarbar"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>
@@ -76,7 +77,8 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrStr"/>
@@ -97,7 +99,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -119,7 +123,7 @@
     <tag group="SkillType" tag="Standard"/>
 	
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
 
 
     <!-- Specify the Charact to which this skill is linked -->
@@ -162,7 +166,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -182,7 +188,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -204,7 +212,9 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
+	<tag group="SkillSrc" tag="cuNomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrCon"/>
@@ -226,6 +236,8 @@
     <!-- <tag group="DashTacCon" tag="NonCombat"/> -->
     <tag group="SkillType" tag="Standard"/>
 
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuPrim"/>	
 
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -248,7 +260,8 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+	<tag group="SkillSrc" tag="cuNomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -270,7 +283,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrCha"/>
     <link linkage="Char2" thing="attrCha"/>
@@ -291,7 +306,9 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrPow"/>
@@ -312,8 +329,11 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
-
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
+	<tag group="SkillSrc" tag="cuNomadic"/>	
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -335,7 +355,7 @@
     <tag group="SkillType" tag="Standard"/>
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -356,8 +376,11 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
+
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
+    <tag group="SkillSrc" tag="cuPrim"/>
+	<tag group="SkillSrc" tag="cuNomadic"/>	
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrInt"/>
@@ -380,7 +403,7 @@
 
 
 	<!-- Tag the cultures and professions for which this skill is legal -->
-    <tag group="SkillSrc" tag="Barbarian"/>
+    <tag group="SkillSrc" tag="cuBarbar"/>
 	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
@@ -421,7 +444,10 @@
     <tag group="DashTacCon" tag="NonCombat"/>
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuPrim"/>
+	<tag group="SkillSrc" tag="cuNomadic"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrDex"/>
     <link linkage="Char2" thing="attrInt"/>
@@ -481,7 +507,9 @@
     <tag group="DashTacCon" tag="NonCombat"/> 
     <tag group="SkillType" tag="Standard"/>
 
-
+	<!-- Tag the cultures and professions for which this skill is legal -->
+    <tag group="SkillSrc" tag="cuCivil"/>
+	
     <!-- Specify the Charact to which this skill is linked -->
     <link linkage="Char1" thing="attrPow"/>
     <link linkage="Char2" thing="attrPow"/>

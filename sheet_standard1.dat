@@ -158,14 +158,14 @@
     </portal>
 
 
-  <!-- oAbility portal
+  <!-- oPassion portal
         This is a table of all Special Abilities for the actor.
   -->
   <portal
-    id="oAbility"
+    id="oPassion"
     style="outNormal">
     <output_table
-      component="Ability"
+      component="Passion"
       showtemplate="oAbilPick">
       <list><![CDATA[
         ]]></list>
@@ -615,7 +615,7 @@
   <template
     id="oAbilPick"
     name="Output Special Abilities Table"
-    compset="Ability"
+    compset="Passion"
     marginvert="2">
 
     <portal
@@ -1178,7 +1178,7 @@
 
           ~if there are any activated abilities, report them
           var active as string
-          foreach pick in hero from Ability where "User.Activation & Helper.Activated & !Hide.InPlay"
+          foreach pick in hero from Passion where "User.Activation & Helper.Activated & !Hide.InPlay"
             active = splice(active,eachpick.field[name].text,", ")
             nexteach
 
@@ -1441,7 +1441,7 @@
   -->
   <layout
     id="oRightSide">
-    <portalref portal="oAbility"/>
+    <portalref portal="oPassion"/>
     <portalref portal="oSkills"/>
     <portalref portal="oGear"/>
     <portalref portal="oPersonal"/>
@@ -1449,7 +1449,7 @@
     <position><![CDATA[
       ~position the character portrait at the top and the various tables beneath
       perform template[oPortrait].autoplace
-      perform portal[oAbility].autoplace
+      perform portal[oPassion].autoplace
       perform portal[oSkills].autoplace
       perform portal[oGear].autoplace
       perform portal[oPersonal].autoplace

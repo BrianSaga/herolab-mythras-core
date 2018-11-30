@@ -323,7 +323,7 @@
         Used for things that require the presentation of user selection options to
         customize a pick within a table. For example, a special ability that requires
         the user to select an Charact to be associated would use the menus offered
-        by this component to easily add the capability. You can use the "UserSelect"
+        by this component to easily add the capPassion. You can use the "UserSelect"
         template in the file "visual.dat" to manage the pick within a table or adapt
         the mechanisms therein for your own needs.
   -->

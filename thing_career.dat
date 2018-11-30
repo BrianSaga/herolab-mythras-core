@@ -12,11 +12,11 @@
 
 <document signature="Hero Lab Data">
 
-  <!-- Sample Ability
+  <!-- Sample Passion
   <thing
     id="abSample"
     name="Sample"
-    compset="Ability"
+    compset="Passion"
     isunique="yes"
     description="Description goes here">
  -->
@@ -48,7 +48,7 @@
     -->
 
     <!-- If the ability should not appear for normal selection, assign this tag
-    <tag group="Hide" tag="Ability"/>
+    <tag group="Hide" tag="Passion"/>
     -->
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag
@@ -59,7 +59,7 @@
     <eval value="1" phase="PreTraits" priority="5000">
       <before name="Calc trtFinal"/><![CDATA[
       ~if we haven't been activated, just get out (only needed for user-activated abilities)
-      doneif (field[abilActive].value = 0)
+      doneif (field[pasActive].value = 0)
 
       ~apply whatever adjustment(s) are needed here
       ~#traitbonus[trDmgMod] += 1
