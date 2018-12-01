@@ -69,7 +69,7 @@
     style="tblNormal">
     <table_fixed 
       component="Passion"
-      showtemplate="proSklPick"
+      showtemplate="UserSelect"
 	  alwaysupdate="yes">
       <list>AddedBy.Culture</list>
      <headertitle>
@@ -85,6 +85,7 @@
       component="GizOption"
       showtemplate="SimpleItem"
       choosetemplate="SimpleItem"
+      choosesortset="Promote"
       showfixedlast="yes"
       columns="2"
       addpick="resPassion">
@@ -375,6 +376,7 @@
     <portalref portal="stCulture" taborder="10"/>
     <portalref portal="CultureOpt" taborder="20"/>
     <portalref portal="skSkillClt" taborder="30"/>
+    <portalref portal="skPassClt" taborder="40"/>
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
     <position><![CDATA[
@@ -389,14 +391,20 @@
 	  var cult as number
 	  cult = hero.tagis[Culture.?]
 	  portal[skSkillClt].visible = cult
+	  portal[skPassClt].visible = cult
 	  portal[CultureOpt].visible = cult
 	  
       portal[stCulture].top = 2
       portal[stCulture].width = width - 10
+	  
       portal[CultureOpt].top = portal[stCulture].bottom + 5
       portal[CultureOpt].width = width - 10
+	  
       portal[skSkillClt].top = portal[CultureOpt].bottom + 5
       portal[skSkillClt].width = width - 10
+	  
+      portal[skPassClt].top = portal[skSkillClt].bottom + 5
+      portal[skPassClt].width = width - 10
       ]]></position>
 
     </layout>

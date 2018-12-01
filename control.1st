@@ -186,10 +186,11 @@
 	<!-- Define a sortset that lists Standard then pro skills -->
   <sortset
     id="SkillType"
-    name="Skills ">
+    name="Skills">
     <sortkey isfield="no" id="SkillType" isascend="yes"/>
     <sortkey isfield="no" id="_Name_"/>
     </sortset>
+	
 
 
   </document>

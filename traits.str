@@ -572,6 +572,8 @@
     <compref component="Trait"/>
     <compref component="UserSelect"/>
     <compref component="SpecialTab"/>
+    <compref component="Domain"/>
+    <compref component="Custom"/>
     <compref component="CanAdvance"/>
     </compset>
 

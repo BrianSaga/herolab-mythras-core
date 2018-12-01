@@ -99,13 +99,6 @@
     <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
     -->
 	  
-		<child
-			entity="entConfig">
-			<tag group="Helper" tag="Gizmo"/>
-			<bootstrap thing="GizInfo">
-				<assignval field="TagExOnThg" value="(CultureOpt.cuNomadic)"/>
-			</bootstrap>
-		</child>
     </thing>
 	
   <!-- Civilised Culture -->

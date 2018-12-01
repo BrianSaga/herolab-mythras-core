@@ -319,6 +319,7 @@
    <tag group="OptionOn" tag="cuPrim"/>
     <!-- <tag group="OptionOn" tag="cuCivil"/> -->
     <tag group="OptionOn" tag="cuBarbar"/>
+
     <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
 		<bootstrap thing="skSurvive">
 			<!-- <containerreq phase="Setup" priority="500"> -->
@@ -344,8 +345,87 @@
     <tag group="OptionOn" tag="cuPrim"/>
     <!-- <tag group="OptionOn" tag="cuCivil"/> -->
     <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="Promote" tag="Top"/>
     <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
 		<bootstrap thing="skTrack">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+	<!-- Loyalty to Clan Chieftain Option -->
+  <thing
+    id="optLoyalty"
+    name="Passion: Loyalty"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+     <tag group="OptionOn" tag="cuNomadic"/> 
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/> 
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+    <tag group="Promote" tag="Top"/>
+		<bootstrap thing="pasLoyalty">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+
+
+	<!-- Loyalty to Clan Chieftain Option -->
+  <thing
+    id="optLove"
+    name="Passion: Love"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+     <tag group="OptionOn" tag="cuNomadic"/> 
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/> 
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="Promote" tag="Top"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="pasLove">
+			<!-- <containerreq phase="Setup" priority="500"> -->
+				<!-- ~val:Level.? >= 4 -->
+			<!-- </container> -->
+			<autotag group="AddedBy" tag="Culture"/>
+			<!-- <assignval field="MyField" value="42"/> -->
+		</bootstrap>
+    </thing>
+
+
+	<!-- Hate Option -->
+  <thing
+    id="optHate"
+    name="Passion: Hate"
+    compset="GizOption"
+    isunique="yes"
+    description="Description goes here">
+
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
+     <tag group="OptionOn" tag="cuNomadic"/> 
+    <tag group="OptionOn" tag="cuPrim"/>
+    <tag group="OptionOn" tag="cuCivil"/> 
+    <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="Promote" tag="Top"/>
+    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+		<bootstrap thing="pasHate">
 			<!-- <containerreq phase="Setup" priority="500"> -->
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->

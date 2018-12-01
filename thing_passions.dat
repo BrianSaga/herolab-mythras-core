@@ -14,8 +14,8 @@
 
   <!-- Sample Passion -->
   <thing
-    id="abLoyClan"
-    name="Loyalty to Clan Chieftain"
+    id="pasLoyalty"
+    name="Loyalty"
     compset="Passion"
     isunique="yes"
     description="Description goes here">
@@ -36,12 +36,13 @@
     -->
 
     <!-- If array-based menu selection is needed, make sure the compset includes
-          "UserSelect" component and define these fields as appropriate.
-    <fieldval field="usrLabelAr" value="Menu1"/>
-    <arrayval field="usrArray" index="0" value="Choice #1"/>
-    <arrayval field="usrArray" index="1" value="Choice #2"/>
-    <arrayval field="usrArray" index="2" value="Choice #3"/>
-    -->
+          "UserSelect" component and define these fields as appropriate.-->
+    <fieldval field="usrLabelAr" value="Focus: "/>
+    <arrayval field="usrArray" index="0" value="Clan Chieftain"/>
+    <arrayval field="usrArray" index="1" value="Town/City"/>
+    <arrayval field="usrArray" index="2" value="Tribal Chieftain/Khan"/>
+    <arrayval field="usrArray" index="3" value="Chief/Headman"/>
+    
 
     <!-- If the ability can only be selected at character creation, assign this tag
     <tag group="User" tag="CreateOnly"/>
@@ -71,10 +72,75 @@
     -->
 
     </thing> 
+	
+  <!-- Sample Passion -->
+  <thing
+    id="pasHate"
+    name="Hate"
+    compset="Passion"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If checkbox selection is needed, make sure the compset includes "UserSelect"
+          component and define this field appropriately.
+    <fieldval field="usrChkText" value="Menu1"/>
+    -->
+
+    <!-- If thing-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields and tags as appropriate.
+    <fieldval field="usrLabel1" value="Menu1"/>
+    <fieldval field="usrCandid1" value="component.Charact"/>
+    <fieldval field="usrLabel2" value="Menu2"/>
+    <fieldval field="usrCandid2" value="component.Skill"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    -->
+
+    <!-- If array-based menu selection is needed, make sure the compset includes
+          "UserSelect" component and define these fields as appropriate.-->
+    <fieldval field="usrLabelAr" value="Focus: "/>
+    <arrayval field="usrArray" index="0" value="creature"/>
+    <arrayval field="usrArray" index="1" value="rival"/>
+    <arrayval field="usrArray" index="2" value="clan"/>
+    <arrayval field="usrArray" index="3" value="gang"/>
+    <arrayval field="usrArray" index="4" value="district"/>
+    <arrayval field="usrArray" index="5" value="city"/>
+    <arrayval field="usrArray" index="6" value="tribe"/>
+    <arrayval field="usrArray" index="7" value="other"/>
+    
+
+    <!-- If the ability can only be selected at character creation, assign this tag -->
+    <tag group="User" tag="CreateOnly"/>
+   
+
+    <!-- If the ability should not appear for normal selection, assign this tag
+    <tag group="Hide" tag="Passion"/>
+    -->
+
+    <!-- If the ability can be activated by the user to apply its effects, assign this tag 
+    <tag group="User" tag="NeedDomain"/> -->
+  
+
+    <!-- Define any script needed to apply changes to other traits
+    <eval value="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out (only needed for user-activated abilities)
+      doneif (field[pasActive].value = 0)
+
+      ~apply whatever adjustment(s) are needed here
+      ~#traitbonus[trDmgMod] += 1
+      ]]></eval>
+    -->
+
+    <!-- Define any appropriate pre-requisites for the ability
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
+    -->
+
+    </thing> 
 
 	<!-- Love Passion -->
   <thing
-    id="abLove"
+    id="pasLove"
     name="Love"
     compset="Passion"
     isunique="yes"
@@ -97,7 +163,7 @@
 
     <!-- If array-based menu selection is needed, make sure the compset includes
           "UserSelect" component and define these fields as appropriate. -->
-    <fieldval field="usrLabelAr" value="Focus"/>
+    <fieldval field="usrLabelAr" value="Focus: "/>
     <arrayval field="usrArray" index="0" value="friend"/>
     <arrayval field="usrArray" index="1" value="sibling"/>
     <arrayval field="usrArray" index="2" value="romantic lover"/>
@@ -112,7 +178,7 @@
     -->
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag
-    <tag group="User" tag="Activation"/>
+    <tag group="User" tag="NeedDomain"/>
     -->
 
     <!-- Define any script needed to apply changes to other traits
