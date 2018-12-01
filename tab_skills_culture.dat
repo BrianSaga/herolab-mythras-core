@@ -375,8 +375,8 @@
     id="skillclt">
     <portalref portal="stCulture" taborder="10"/>
     <portalref portal="CultureOpt" taborder="20"/>
-    <portalref portal="skSkillClt" taborder="30"/>
-    <portalref portal="skPassClt" taborder="40"/>
+    <portalref portal="skSkillClt" taborder="40"/>
+    <portalref portal="skPassClt" taborder="30"/>
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
     <position><![CDATA[
@@ -400,11 +400,11 @@
       portal[CultureOpt].top = portal[stCulture].bottom + 5
       portal[CultureOpt].width = width - 10
 	  
-      portal[skSkillClt].top = portal[CultureOpt].bottom + 5
-      portal[skSkillClt].width = width - 10
-	  
-      portal[skPassClt].top = portal[skSkillClt].bottom + 5
+      portal[skPassClt].top = portal[CultureOpt].bottom + 5
       portal[skPassClt].width = width - 10
+	  
+      portal[skSkillClt].top = portal[skPassClt].bottom + 5
+      portal[skSkillClt].width = width - 10
       ]]></position>
 
     </layout>

@@ -12,14 +12,14 @@
 
 <document signature="Hero Lab Data">
 
-  <!-- Sample Passion
+  <!-- Agent Career -->
   <thing
-    id="abSample"
-    name="Sample"
-    compset="Passion"
+    id="caAgent"
+    name="Agent"
+    compset="Career"
     isunique="yes"
     description="Description goes here">
- -->
+
     <!-- If checkbox selection is needed, make sure the compset includes "UserSelect"
           component and define this field appropriately.
     <fieldval field="usrChkText" value="Menu1"/>
@@ -43,13 +43,12 @@
     <arrayval field="usrArray" index="2" value="Choice #3"/>
     -->
 
-    <!-- If the ability can only be selected at character creation, assign this tag
+    <!-- If the ability can only be selected at character creation, assign this tag  -->
     <tag group="User" tag="CreateOnly"/>
-    -->
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
 
-    <!-- If the ability should not appear for normal selection, assign this tag
-    <tag group="Hide" tag="Passion"/>
-    -->
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag
     <tag group="User" tag="Activation"/>
@@ -66,11 +65,182 @@
       ]]></eval>
     -->
 
-    <!-- Define any appropriate pre-requisites for the ability
+    <!-- Define any appropriate pre-requisites for the ability    
     <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
-
+	-->
 
     </thing>
+   
+  <!-- Alchemist Career -->
+  <thing
+    id="caAlchem"
+    name="Alchemist"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+    <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
     -->
 
+    </thing>   
+	
+  <!-- Beast Handler  Career -->
+  <thing
+    id="caBeastHan"
+    name="Beast Handler"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+   
+	
+  <!-- Courtesan  Career -->
+  <thing
+    id="caCourtes"
+    name="Courtesan"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+   
+   
+	
+  <!-- Courtier Career -->
+  <thing
+    id="caCourtier"
+    name="Courtier"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+  
+	
+  <!-- Crafter Career -->
+  <thing
+    id="caCrafter"
+    name="Crafter"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+   
+	
+  <!-- Entertainer Career -->
+  <thing
+    id="caEnterta"
+    name="Entertainer"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+   	
+  <!-- Fisher Career -->
+  <thing
+    id="caFisher"
+    name="Fisher"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>
+   
+   	
+  <!-- Farmer Career -->
+  <thing
+    id="caFarmer"
+    name="Farmer"
+    compset="Career"
+    isunique="yes"
+    description="Description goes here">
+
+       <!-- If the ability can only be selected at character creation, assign this tag  -->
+    <tag group="User" tag="CreateOnly"/>
+	
+    <!-- If the ability should not appear for normal selection, assign this tag    -->
+    <tag group="Hide" tag="Career"/>
+
+
+    <!-- Define any appropriate pre-requisites for the ability 
+    <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq> 
+    -->
+
+    </thing>;
   </document>

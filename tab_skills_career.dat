@@ -46,64 +46,48 @@
         The title includes an indication of how many selections have been chosen
         and how many remain, with appropriate color highlighting to prompt the user.
   -->
+
+
   <portal
     id="skSkillCar"
     style="tblNormal">
-    <table_dynamic
+    <table_fixed 
       component="Skill"
       showtemplate="proSklPick"
-      choosetemplate="SimpleItem"
 	  showsortset="SkillType"
-      showfixedlast="yes"
-      addpick="resPassion">
-      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !GizInfo.Option</list>
-      <candidate>!Hide.Passion</candidate>
-	  <needtag
-		container="SkillSrc"
-		thing="SkillSrc"
-		usehero="yes" />
-      <titlebar><![CDATA[
-        @text = "Add a Professional Skill - " & hero.child[resPassion].field[resSummary].text
-        ]]></titlebar>
-      <description/>
-      <additem><![CDATA[
-        ~if we're in advancement mode, we've been frozen, so display accordingly
-        if (state.iscreate = 0) then
-          @text = "{text clrgrey}Add Special Abilities Via Advances Tab"
-          done
-          endif
-
-        ~set the color based on whether the proper number of slots are allocated
-        if (field[resLeft].value = 0) then
-          @text = "{text clrgrey}"
-        elseif (field[resLeft].value < 0) then
-          @text = "{text clrwarning}"
-          endif
-        @text &= "Add New Professional Skill"
-        ]]></additem>
-      </table_dynamic>
+	  alwaysupdate="yes">
+      <list>AddedBy.Career</list>
+     <headertitle><![CDATA[
+      @text = hero.tagnames[Career.?] & " Skills"
+      ]]></headertitle>
+      </table_fixed>
     </portal>
+
 
   <portal
     id="CareerOpt"
     style="tblNormal">
     <table_dynamic
-      component="Skill"
-      showtemplate="proSklPick"
+      component="GizOption"
+      showtemplate="SimpleItem"
       choosetemplate="SimpleItem"
-	  showsortset="SkillType"
+      choosesortset="Promote"
       showfixedlast="yes"
+      columns="2"
       addpick="resPassion">
-      <list>!Hide.SkillProf &amp; !SkillType.Standard &amp; !GizInfo.Option</list>
-      <candidate>!Hide.Passion</candidate>
+      <list>OptionOn.?</list>
+	  <candidate></candidate>
 	  <needtag
-		container="SkillSrc"
-		thing="SkillSrc"
-		usehero="yes" />
+		container="Career"
+		thing="OptionOn"
+		usehero="yes" /> 
       <titlebar><![CDATA[
-        @text = "Add a Professional Skill - " & hero.child[resPassion].field[resSummary].text
+        @text = "Add a selection for " & hero.tagnames[Career.?] & " career"
         ]]></titlebar>
       <description/>
+      <headertitle><![CDATA[
+        @text = "Options for " & hero.tagnames[Career.?] & " career"
+        ]]></headertitle>	  
       <additem><![CDATA[
         ~if we're in advancement mode, we've been frozen, so display accordingly
         if (state.iscreate = 0) then
@@ -117,7 +101,7 @@
         elseif (field[resLeft].value < 0) then
           @text = "{text clrwarning}"
           endif
-        @text &= "Add New Professional Skill"
+        @text &= "Add New Option for " & hero.tagnames[Career.?] & " career"
         ]]></additem>
       </table_dynamic>
     </portal>
@@ -139,9 +123,11 @@
       <titlebar><![CDATA[
         @text = "Choose the career for your character"
         ]]></titlebar>
+		<description />
       </chooser_table>
     </portal>
 	
+  
 	
   <!-- skills layout
         This layout orchestrates the display of the visual elements that comprise
@@ -154,7 +140,9 @@
   <layout
     id="skillcar">
     <portalref portal="stCareer" taborder="10"/>
-    <portalref portal="skSkillCar" taborder="20"/>
+    <portalref portal="CareerOpt" taborder="20"/>
+    <portalref portal="skSkillCar" taborder="30"/>
+
 
     <!-- This script sizes and positions the layout and its child visual elements. -->
     <position><![CDATA[
@@ -166,11 +154,20 @@
 
       ~position and size the table to span the full layout; it will only use the
       ~vertical space that it actually needs
-	  var career as number
-	  career = hero.tagis[Career.?]
-	  portal[skSkillCar].visible = career
-      perform portal[stCareer].autoplace
-      perform portal[skSkillCar].autoplace
+	  var cult as number
+	  cult = hero.tagis[Career.?]
+	  portal[skSkillCar].visible = cult
+	  portal[CareerOpt].visible = cult
+	  
+      portal[stCareer].top = 2
+      portal[stCareer].width = width - 10
+	  
+      portal[CareerOpt].top = portal[stCareer].bottom + 5
+      portal[CareerOpt].width = width - 10  
+
+	  portal[skSkillCar].top = portal[CareerOpt].bottom + 5
+      portal[skSkillCar].width = width - 10
+	  
       ]]></position>
 
     </layout>
@@ -189,7 +186,7 @@
     name="Career"
     marginhorz="5"
     marginvert="5"
-    order="130">
+    order="135">
     <live>!HideTab.career</live>
     <layoutref layout="skillcar"/>
     <position><![CDATA[

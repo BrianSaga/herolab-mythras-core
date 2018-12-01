@@ -179,6 +179,8 @@
     <value id="SkillProf"/>       <!-- Indicates a skill that is not user selectable -->
     <value id="InPlay"/>          <!-- Indicates an in-play adjustment that is hidden from view -->
     <value id="Passion"/>         <!-- Indicates an ability that is not user selectable (i.e. conferred by race or similar mechanism) -->
+    <value id="Culture"/>         <!-- Indicates an ability that is not user selectable (i.e. conferred by race or similar mechanism) -->
+    <value id="Career"/>         <!-- Indicates an ability that is not user selectable (i.e. conferred by race or similar mechanism) -->
     <value id="Special"/>         <!-- Indicates a trait that is hidden from the Special tab -->
     <value id="Tracker"/>         <!-- Indicates a tracker that is hidden from the In-Play tab (and likely shown somewhere else) -->
     </group>
