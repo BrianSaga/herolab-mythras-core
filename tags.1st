@@ -25,6 +25,7 @@
     id="Helper">
     <value id="Bootstrap"/>   <!-- Identifies a pick that must be bootstrapped for every hero -->
     <value id="Displace"/>    <!-- Pick should be displaced if it is designated for displacement -->
+    <value id="Shadow"/>    <!-- Pick should be displaced if it is designated for displacement -->
     <value id="Maximum"/>     <!-- Passion has reached its maximum level and cannot be improved -->
     <value id="Minimum"/>     <!-- Passion has reached its minimum level and cannot be decreased -->
     <value id="NoDelete"/>    <!-- Indicates the pick cannot be deleted because another selection precludes it -->
@@ -42,6 +43,7 @@
     <value id="Gizmo"/>       <!-- Pick added via Gizmo -->
     <value id="Enmasse"/>     <!-- Pick added via enmasse -->
     <value id="CultSkills"/>  <!-- For existence tag -->
+    <value id="NoValue"/>     <!-- For existence tag -->
     </group>
 
   <!-- User group - general helper tags that can be assigned by users via the Editor
@@ -409,4 +411,10 @@
 		<value id="Bonus"/>
     </group>
 	
+	<group
+    id="CultLink"
+    dynamic="yes">
+    </group>
+
+
   </document>

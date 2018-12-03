@@ -65,6 +65,9 @@
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     <after name="Component Equippable: Equipped" phase="Initialization" priority="5000"/>
     </depends>
+  <depends name="Component GizOption: Eval Script #2" phase="Pre-Traits" priority="5000">
+    <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
+    </depends>
   <depends name="Thing hlAbdo: Eval Script #1" phase="Pre-Traits" priority="5000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
     </depends>
@@ -91,10 +94,6 @@
     </depends>
   <depends name="Field trtUser: Bound trtUser" phase="Traits" priority="1000">
     <before name="Field trtFinal: Calc trtFinal" phase="Traits" priority="3000"/>
-    </depends>
-  <depends name="Component GizOption: Eval Script #2" phase="Traits" priority="1500">
-    <before name="Field resLeft: Calc resLeft" phase="Final" priority="1000"/>
-    <after name="Field trtUser: Bound trtUser" phase="Traits" priority="1000"/>
     </depends>
   <depends name="Component Skill: Eval Script #3" phase="Traits" priority="4000">
     <before name="Component Derived: Derived trtFinal" phase="Traits" priority="6000"/>
@@ -318,6 +317,8 @@
         </task>
       <task name="Component Defense: Eval Script #2">
         </task>
+      <task name="Component GizOption: Eval Script #2">
+        </task>
       <task name="Thing hlAbdo: Eval Script #1">
         </task>
       <task name="Thing hlArmLt: Eval Script #1">
@@ -339,10 +340,6 @@
   <phase phase="Traits (4)">
     <priority priority="1000">
       <task name="Field trtUser: Bound trtUser">
-        </task>
-      </priority>
-    <priority priority="1500">
-      <task name="Component GizOption: Eval Script #2">
         </task>
       </priority>
     <priority priority="3000">

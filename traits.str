@@ -189,8 +189,6 @@
 
     <!-- Each skill needs its own identity tag so existing skills can be identified during advancement -->
     <identity group="Skill"/>
-	
-
     <creation><![CDATA[
       ~custom items need to pick a name
       if (tagis[Helper.CustomItem] <> 0) then
@@ -205,12 +203,14 @@
     <tag group="User" tag="NoAutoName"/>
 		
 	<eval index="1" phase="Initialize" priority="3000"><![CDATA[
-      field[trtMinimum].value = 1
+      field[trtMinimum].value = 0
       field[trtMaximum].value = 200
       ]]></eval>
     <!-- Track the skill on the actor -->
     <eval index="2" phase="Setup" priority="5000"><![CDATA[
-      perform forward[Skill.?]
+
+			perform forward[Skill.?]
+
       ]]></eval>
 	  
     <!-- Calculate the skill as appropriate -->
@@ -484,6 +484,54 @@
     <identity group="HitLoc"/>
 	
     </component>
+
+<!-- Power Option component
+        Used for picking options on Powers
+  -->
+  <component
+    id="GizOption"
+    name="Gizmo Option"
+    autocompset="no"
+    hasshortname="yes"
+    addbehavior="never"
+	ispublic="yes">
+	
+	<linkage linkage="AssocPick" optional="yes"/> 
+	<identity group="GizOption"/>
+ 
+    <!-- Assign the tag to the container -->
+    <eval index="1" phase="Initialize" priority="1000"><![CDATA[
+      perform forward[GizOption.?,parent]
+	  
+	  ~Let the linkage pick know to show itself
+	  doneif (islinkage[AssocPick] = 0)
+	 
+	  if (tagis[portal.CultureOpt] <> 0) then
+		perform linkage[AssocPick].assign[AddedBy.Culture]
+	  elseif (tagis[portal.CareerOpt] <> 0) then
+	    perform linkage[AssocPick].assign[AddedBy.Career]
+	  endif
+      ]]></eval>	
+	  
+      <eval value="2" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out (only needed for user-activated abilities)
+      ~doneif (field[pasActive].value = 0)
+
+      ~apply whatever adjustment(s) are needed here
+	  var tagex as string
+	  if (tagis[portal.CultureOpt] <> 0) then
+		tagex = "CultLink." & idstring
+	  elseif (tagis[portal.CareerOpt] <> 0) then
+		tagex = "CarLink." & idstring
+	  endif
+	  if (islinkage[AssocPick] <> 0) then
+		linkage[AssocPick].field[trtBonus].value += field[trtUser].value
+		done
+		endif
+	   hero.findchild[none,tagex].field[trtBonus].value += field[trtUser].value
+      ]]></eval>			
+    </component>
 	
 	<!-- Power Info component
         Used for tracking modifiers on powers
@@ -493,6 +541,7 @@
     name="Gizmo Info"
     autocompset="no"
 	ispublic="no">
+
 
     <!-- Tracks the selection made when a menu choice is required -->
     <field
@@ -603,10 +652,16 @@
     <compref component="Custom"/>
     </compset>
 	
+ <compset
+    id="GizOption">
+    <compref component="GizOption"/>
+    <compref component="Custom"/>
+    <compref component="Trait"/>
+    </compset>
+	
   <!-- Entity for skill -->
    <entity
 	  id="entConfig"
-	  defaultthing="GizInfo"
 	  form="gizoption">
 	  <!-- <bootstrap thing="PowerInfo"/> -->
 	  </entity>

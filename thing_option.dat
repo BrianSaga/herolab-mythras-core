@@ -20,6 +20,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
     <!-- If checkbox selection is needed, make sure the compset includes "UserSelect"
           component and define this field appropriately.
     <fieldval field="usrChkText" value="Menu1"/>
@@ -55,16 +57,18 @@
     <tag group="OptionOn" tag="cuPrim"/>
     <tag group="OptionOn" tag="cuNomadic"/>
     <link linkage="AssocPick" thing="skAthletic"/>
-    <!-- Define any script needed to apply changes to other traits
+    <!-- Define any script needed to apply changes to other traits 
     <eval value="1" phase="PreTraits" priority="5000">
       <before name="Calc trtFinal"/><![CDATA[
       ~if we haven't been activated, just get out (only needed for user-activated abilities)
-      doneif (field[pasActive].value = 0)
+      ~doneif (field[pasActive].value = 0)
 
       ~apply whatever adjustment(s) are needed here
-      ~#traitbonus[trDmgMod] += 1
+	  if (islinkage[AssocPick] <> 0) then
+		linkage[AssocPick].field[trtBonus].value += field[trtUser].value
+		#traitbonus[trDmgMod] += 1
       ]]></eval>
-    -->
+   -->
 
     <!-- Define any appropriate pre-requisites for the ability
     <exprreq iserror="yes" message="Strength 5 required."><![CDATA[#trait[attrStr] >= 5]]></exprreq>
@@ -80,6 +84,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -94,6 +100,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuBarbar"/>
@@ -110,6 +118,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuBarbar"/>
@@ -126,6 +136,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -141,20 +153,20 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
     <tag group="OptionOn" tag="cuPrim"/>
     <tag group="OptionOn" tag="cuCivil"/>
     <tag group="OptionOn" tag="cuBarbar"/>
-    <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
+
 		<bootstrap thing="skCombatSt">
-			<!-- <containerreq phase="Setup" priority="500"> -->
-				<!-- ~val:Level.? >= 4 -->
-			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
-			<!-- <assignval field="MyField" value="42"/> -->
+			<autotag group="CultLink" tag="optCombat"/>
 		</bootstrap>
+
     </thing>
 	
 	<!-- Sample Passion -->
@@ -165,6 +177,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -189,6 +203,8 @@
     isunique="yes"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <!-- <tag group="OptionOn" tag="cuNomadic"/> -->
@@ -214,6 +230,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -239,6 +257,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -264,6 +284,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -288,7 +310,9 @@
     isunique="no"
     description="Description goes here">
 
-
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
+	 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <!-- <tag group="OptionOn" tag="cuNomadic"/> -->
     <!-- <tag group="OptionOn" tag="cuPrim"/> -->
@@ -313,6 +337,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -339,6 +365,8 @@
     isunique="no"
     description="Description goes here">
 
+	 <fieldval field="trtMinimum" value="5"/>
+	 <fieldval field="trtMaximum" value="15"/>
 
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
     <tag group="OptionOn" tag="cuNomadic"/>
@@ -364,12 +392,12 @@
     isunique="yes"
     description="Description goes here">
 
-
     <!-- If the ability can be activated by the user to apply its effects, assign this tag -->
      <tag group="OptionOn" tag="cuNomadic"/> 
     <tag group="OptionOn" tag="cuPrim"/>
     <tag group="OptionOn" tag="cuCivil"/> 
     <tag group="OptionOn" tag="cuBarbar"/>
+    <tag group="Helper" tag="NoValue"/>
     <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
     <tag group="Promote" tag="Top"/>
 		<bootstrap thing="pasLoyalty">
@@ -398,6 +426,7 @@
     <tag group="OptionOn" tag="cuCivil"/> 
     <tag group="OptionOn" tag="cuBarbar"/>
     <tag group="Promote" tag="Top"/>
+    <tag group="Helper" tag="NoValue"/>
     <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
 		<bootstrap thing="pasLove">
 			<!-- <containerreq phase="Setup" priority="500"> -->
@@ -424,6 +453,7 @@
     <tag group="OptionOn" tag="cuCivil"/> 
     <tag group="OptionOn" tag="cuBarbar"/>
     <tag group="Promote" tag="Top"/>
+    <tag group="Helper" tag="NoValue"/>
     <!-- <link linkage="AssocPick" thing="skSwim"/>		 -->
 		<bootstrap thing="pasHate">
 			<!-- <containerreq phase="Setup" priority="500"> -->
