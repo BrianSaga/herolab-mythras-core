@@ -174,7 +174,7 @@
     id="optCraft"
     name="Craft"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -191,6 +191,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optCraft"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -217,6 +218,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optHealing"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -227,7 +229,7 @@
     id="optLore"
     name="Lore"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -244,6 +246,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optLore"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -254,7 +257,7 @@
     id="optMusic"
     name="Musicianship"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -271,6 +274,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optMusic"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -281,7 +285,7 @@
     id="optNavigat"
     name="Navigate"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -298,6 +302,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optNavigat"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -307,7 +312,7 @@
     id="optSeaman"
     name="Seamanship"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -324,6 +329,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optSeaman"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -334,7 +340,7 @@
     id="optSurviv"
     name="Survival"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -352,6 +358,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
+			<autotag group="CultLink" tag="optSurviv"/>
 			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
@@ -362,7 +369,7 @@
     id="optTrack"
     name="Track"
     compset="GizOption"
-    isunique="no"
+    isunique="yes"
     description="Description goes here">
 
 	 <fieldval field="trtMinimum" value="5"/>
@@ -380,7 +387,7 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
-			<!-- <assignval field="MyField" value="42"/> -->
+			<autotag group="CultLink" tag="optTrack"/>
 		</bootstrap>
     </thing>
 
@@ -460,7 +467,6 @@
 				<!-- ~val:Level.? >= 4 -->
 			<!-- </container> -->
 			<autotag group="AddedBy" tag="Culture"/>
-			<!-- <assignval field="MyField" value="42"/> -->
 		</bootstrap>
     </thing>
 

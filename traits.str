@@ -501,7 +501,7 @@
  
     <!-- Assign the tag to the container -->
     <eval index="1" phase="Initialize" priority="1000"><![CDATA[
-      perform forward[GizOption.?,parent]
+      perform forward[GizOption.?]
 	  
 	  ~Let the linkage pick know to show itself
 	  doneif (islinkage[AssocPick] = 0)
@@ -529,8 +529,10 @@
 		linkage[AssocPick].field[trtBonus].value += field[trtUser].value
 		done
 		endif
-	   hero.findchild[none,tagex].field[trtBonus].value += field[trtUser].value
-      ]]></eval>			
+	    hero.findchild[none,tagex].field[trtBonus].value += field[trtUser].value
+
+      ]]></eval>
+			
     </component>
 	
 	<!-- Power Info component

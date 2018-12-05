@@ -527,8 +527,8 @@
     <position><![CDATA[
       ~get the height used by the layout and use it, as that means we scroll
       ~if necessary
-      perform layout[skillclt].render
-      height = layout[skillclt].height
+      ~perform layout[skillclt].render
+      ~height = layout[skillclt].height
       ]]></position>
     </panel>
   </document>

@@ -414,6 +414,15 @@
 	<group
     id="CultLink"
     dynamic="yes">
+		<value id="optTrack"/>
+		<value id="optSurviv"/>
+		<value id="optNavigat"/>
+		<value id="optSeaman"/>
+		<value id="optMusic"/>
+		<value id="optLore"/>
+		<value id="optHealing"/>
+		<value id="optCraft"/>
+		<value id="optCombat"/>
     </group>
 
 
